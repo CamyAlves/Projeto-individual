@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="LoginStyle.css">
+    <link rel="stylesheet" href="GlobalStyle.css">
+</head>
+<body>
+
+    <div class="header">
+        <div class="nav-bar">
+            <div class="container">
+                <span class="logo">LOGO</span>
+                <div class="nav">
+                    <span class="home">Home</span>
+                    <button><a href="Cadastro.html">Cadastro</a></button>   
+                </div>
+            </div>     
+        </div>
+    </div>
+
+
+    <div class="login">
+        <div class="formulario">
+            <div class="inputs">
+                <div class="container">
+                    <span class="txtLogin">Log In</span>
+                    <div class="email">
+                        <p>Email</p>
+                        <input type="email" class="inputEmail" id="input_email" placeholder="     Email@email.com">
+                        <p id="p_erroEmail" class="msgErro"></p>
+                    </div>
+                    <div class="senha">
+                        <p>Senha</p>
+                        <input type="password" class="inputSenha" id="input_senha" placeholder="     **********">
+                        <p id="p_erroSenha" class="msgErro"></p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="caixa">
+                <input type="checkbox" class="check">
+                <span>Continuar conectado</span>
+            </div>
+            <button class="btnLogin" onclick="login()">Login</button>      
+        </div>
+
+        <div class="titulo">
+            <div class="container">
+                <span>Music<span style="color: #DD3A88;">blood</span></span>
+                <span class="bemVindo">Bem vindo de volta!!</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+
+    function login(){
+        var email = input_email.value;
+        var senha = input_senha.value;
+        var txtObrigatorio = '*Obrigatório';
+
+        p_erroEmail.innerHTML = '';
+        p_erroSenha.innerHTML = '';
+
+        if(email == ''){
+            p_erroEmail.innerHTML = txtObrigatorio;
+        }/*else if(email == emailBanco){
+
+        }*/
+
+        if(senha == ''){
+            p_erroSenha.innerHTML = txtObrigatorio;
+        }/*else if(senha == senhabanco){
+            
+        }*/
+
+
+        if(p_erroEmail.innerHTML == '' && p_erroSenha.innerHTML == ''){
+            alert('logado')
+        }
+    }
+
+</script>

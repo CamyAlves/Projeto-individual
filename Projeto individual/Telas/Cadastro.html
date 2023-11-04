@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="GlobalStyle.css">
+    <link rel="stylesheet" href="CadastroStyle.css">
+</head>
+<body>
+    <div class="header">
+        <div class="nav-bar">
+            <div class="container">
+                <span class="logo"><a href="">LOGO</a></span>
+                <div class="nav">
+                    <span class="home">Home</span>
+                    <button><a href="Login.html">Login</a></button>   
+                </div>  
+            </div>   
+        </div>
+    </div>
+
+
+    <div class="cadastro">
+        <div class="formulario">
+            <div class="inputs">
+                <div class="container">
+                    <span class="txtCadastro">Cadastro</span>
+                    <div class="nome">
+                        <p>Nome</p>
+                        <input type="text" class="inputNome" id="input_nome" placeholder="     Nickname">
+                        <p id="p_erroNome" class="msgErro"></p>
+                    </div>
+                    <div class="email">
+                        <p>Email</p>
+                        <input type="email" class="inputEmail" id="input_email" placeholder="     Email@email.com">
+                        <p id="p_erroEmail" class="msgErro"></p>
+                    </div>
+                    <div class="dataNascimento">
+                        <p>Data de nascimento</p>
+                        <input type="date" class="inputNasc" id="input_nasc" placeholder="     dd-mm-aaaa">
+                        <p id="p_erroData" class="msgErro"></p>
+                    </div>
+                    <div class="senha">
+                        <p>Senha</p>
+                        <input type="password" class="inputSenha" id="input_senha" placeholder="     **********">
+                        <p id="p_erroSenha" class="msgErro"></p>
+                    </div>
+                    <div class="ConfSenha">
+                        <p>Confirmar senha</p>
+                        <input type="password" class="inputConfSenha" id="input_confSenha" placeholder="     **********">
+                        <p id="p_erroConfSenha" class="msgErro"></p>
+                    </div>
+                </div>
+            </div>
+
+            <button id="botao" class="btnCadastro" onclick="Cadastro()">Cadastrar</button>      
+        </div>
+    </div>
+
+</body>
+</html>
+<script>
+    function Cadastro(){
+        var nome = input_nome.value;
+        var email = input_email.value;
+        var validaEmail = /^[A-Za-z0-9.-]{3,}@[A-Za-z0-9]+\.[A-Za-z]{2,}$/;
+        var dataNasc = input_nasc.value;
+        var senha = input_senha.value;
+        var validaSenha = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[.@$!*?&])[A-Za-z0-9@$!*?&.-]{8,}$/;
+        var confirmaSenha = input_confSenha.value;
+        nome.replaceAll(" ","");
+        var txtObrigatorio = '*Obrigatório';
+
+        p_erroNome.innerHTML = '';
+        p_erroEmail.innerHTML = '';
+        p_erroData.innerHTML = '';
+        p_erroSenha.innerHTML = '';
+        p_erroConfSenha.innerHTML = '';
+   
+            if(nome==""){
+                p_erroNome.innerHTML = txtObrigatorio;
+            }
+
+            if(email==""){
+                p_erroEmail.innerHTML = txtObrigatorio;
+            }else  if(!validaEmail.test(email)){
+                p_erroEmail.innerHTML = '*Email inválido';
+            }
+
+            if(dataNasc==""){
+                p_erroData.innerHTML = txtObrigatorio;
+            }
+
+            if(senha==""){
+                p_erroSenha.innerHTML = txtObrigatorio;
+            }else if(!validaSenha.test(senha)){
+                p_erroSenha.innerHTML = '*Deve conter pelo menos 1 letra maiúscula, 1 letra minúscula, 1 caractere especial, 1 número e ter no mínimo 8 caracteres.';
+                p_erroSenha.style.fontSize = "13px";
+            }
+
+            if(confirmaSenha==""){
+                p_erroConfSenha.innerHTML = txtObrigatorio;
+            }else if(senha != confirmaSenha){
+                p_erroConfSenha.innerHTML = '*As senhas não correpondem';
+            }
+
+
+            if ( p_erroNome.innerHTML === '' && p_erroEmail.innerHTML === '' && p_erroData.innerHTML === '' && p_erroSenha.innerHTML === '' && p_erroConfSenha.innerHTML === ''){
+                botao.style.marginTop = "60px";
+                alert("Cadastrardo");
+            }else{
+                botao.style.marginTop = "10px";
+            }
+        }
+</script>

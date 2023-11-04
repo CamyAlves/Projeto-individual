@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo</title>
+    <link rel="stylesheet" href="../GlobalStyle.css">
+    <link rel="stylesheet" href="tela-jogoStyle.css">
+</head>
+<body>
+    <div class="header">
+        <div class="nav-bar">
+            <div class="container">
+                <span class="logo"><a href="">LOGO</a></span>
+                <div class="nav">
+                    <button><a href="Login.html">Voltar</a></button>   
+                </div>     
+            </div>
+        </div>
+    </div>
+
+    <span id="rodadas" style="color: white; font-size: 30px;"></span>
+
+    <div class="titulo">
+        <h1>Qual a musica?</h1>
+    </div>
+
+    <span id="temporizador"></span>
+
+
+    <div class="resposta">
+        <div class="container">
+            <div class="box">
+                <button id="resposta1"  onclick="button1()"></button>
+                <button id="resposta2"  onclick="button2()"></button>
+            </div>
+        
+            <div class="box">
+                <button id="resposta3"  onclick="button3()"></button>
+                <button id="resposta4" onclick="button4()"></button><br>
+            </div>
+        </div>
+    </div>
+
+    <div class="ponto" style="display: flex; justify-content: end;">
+        <div class="container" style="margin-right: 50px; margin-top: 30px;">
+            <div class="box-ponto" style="background-image: url(../img/borda-pontos.png); width: 300px; height: 200px; display: flex; justify-content: center; border-radius: 10px;">
+                <p id="resultado" style="color: white; font-size: 30px; margin-top: 5px;">pontos: </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<script>
+    var listaRespostas1 = ['vou me matar', 'Sintonia do amor', 'Estilo cachorro', 'Estilo vagabundo'];
+    var listaRespostas2 = ['Maeria', 'cintia', 'Estilo vagabundo', 'thiaguinho'];
+    var listaRespostas3 = ['mc carol', 'tata luxz', 'Vida Loka', 'luciana'];
+    var listaRespostas4 = ['eiata', 'tanga', 'Eu sou 157','paola'];
+    var listaRespostasCerta = ['vou me matar', 'Estilo vagabundo', 'tata luxz', 'paola'];
+    var segundo=0;
+    var pontos=0;
+    var perguntaAtual = 0;
+    var resposta = '';
+    resposta1.innerHTML = listaRespostas1[perguntaAtual];
+    resposta2.innerHTML = listaRespostas2[perguntaAtual];
+    resposta3.innerHTML = listaRespostas3[perguntaAtual];
+    resposta4.innerHTML = listaRespostas4[perguntaAtual];
+
+    function atualizarRelogio() {
+        if(segundo<=30){
+            temporizador.innerHTML = `${segundo} segundos`;
+            rodadas.innerHTML = `${perguntaAtual+1}/10`;
+            if(segundo<2){
+                resposta1.disabled = true;
+                resposta2.disabled = true;
+                resposta3.disabled = true;
+                resposta4.disabled = true;
+            }
+
+            if(segundo == 2 ){
+                habilitarBotoes();
+            } else 
+            
+            if(segundo >= 30 || resposta != ''){
+                resposta1.disabled = true;
+                resposta2.disabled = true;
+                resposta3.disabled = true;
+                resposta4.disabled = true;
+                proximaPergunta();
+                return;
+    
+               
+            }
+
+            segundo+=1;
+            setTimeout(atualizarRelogio, 1000);
+        }
+    }atualizarRelogio();
+
+
+    function habilitarBotoes(){
+        resposta1.disabled = false;
+        resposta2.disabled = false;
+        resposta3.disabled = false;
+        resposta4.disabled = false;
+    }
+
+    function proximaPergunta(){
+        resposta = '';
+        if(perguntaAtual < 3){
+            habilitarBotoes();
+            perguntaAtual+=1;
+
+            resposta1.innerHTML = listaRespostas1[perguntaAtual];
+            resposta1.style.backgroundColor = 'black';
+
+            resposta2.innerHTML = listaRespostas2[perguntaAtual];
+            resposta2.style.backgroundColor = 'black';
+
+            resposta3.innerHTML = listaRespostas3[perguntaAtual];
+            resposta3.style.backgroundColor = 'black';
+
+            resposta4.innerHTML = listaRespostas4[perguntaAtual];
+            resposta4.style.backgroundColor = 'black';
+
+
+
+
+            temporizador.innerHTML = "";
+            segundo = 0; 
+            atualizarRelogio();
+        }else{
+            window.location.href = 'tela-jogo-pontos.html'; 
+        }
+    }
+
+
+
+    function button1(){
+        resposta1.disabled = true;
+        resposta1.style.backgroundColor = '#DD3A88';
+        resposta = listaRespostas1[perguntaAtual];
+        somaPontos();
+    }
+
+    function button2(){
+        resposta2.disabled = true;
+        resposta2.style.backgroundColor = '#DD3A88';
+        resposta = listaRespostas2[perguntaAtual];
+        somaPontos();
+    }
+
+    function button3(){
+        resposta3.disabled = true;
+        resposta3.style.backgroundColor = '#DD3A88';
+        resposta = listaRespostas3[perguntaAtual];
+        somaPontos();
+    }
+
+    function button4(){
+        resposta4.disabled = true;
+        resposta4.style.backgroundColor = '#DD3A88';
+        resposta = listaRespostas4[perguntaAtual];
+        somaPontos();
+    }
+
+
+    function somaPontos(){
+       for(posicao = 0; posicao < listaRespostasCerta.length; posicao+=1){
+            if(resposta==listaRespostasCerta[posicao]){
+                if(segundo <= 10 ){
+                    pontos += 100;
+                    resultado.innerHTML = `pontos: ${pontos}`;
+                }else if(segundo <= 15){
+                    pontos += 80;
+                    resultado.innerHTML = `pontos: ${pontos}`;
+                }else if(segundo <= 25){
+                    pontos += 50;
+                    resultado.innerHTML = `pontos: ${pontos}`;
+                }else if(segundo <= 30){
+                    pontos += 30;
+                    resultado.innerHTML = `pontos: ${pontos}`;
+                }    
+            }
+        }
+    }
+
+
+</script>
