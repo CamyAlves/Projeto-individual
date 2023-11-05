@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../GlobalStyle.css">
     <link rel="stylesheet" href="tela-jogoStyle.css">
 </head>
-<body onload="playMusic()">
+<body>
 
 
     <div class="header">
@@ -33,9 +33,11 @@
             <span id="rodadas" class="rodada"></span>
             
             <div class="titulo">
-                <p>Qual é a <span style="color: #ca156c;">música?</span></p>
+                <span style="margin-top: 10px;">Qual é a <span style="color: #ca156c;">música?</span></span>
             </div>
-            
+            <div class="sub-titulo">
+                <p class="">Nacional</p>
+            </div>
             <span id="temporizador" class="temporizador"></span>
             
             
@@ -65,6 +67,7 @@
                 <div class="btn-comecar" onclick="comecarJogo()">Começar Jogo</div>
             </div>
         </div>
+        <div id="resultado" class="pontuacao">Pontos: 0</div>
     </div>
     
     
@@ -74,11 +77,13 @@
 
 <script>
     var listaMusica = ['musica/Man in the Mirror.mp3', 'musica/Cigana.mp3'];
-    var listaRespostas1 = ['vou me matar', 'Sintonia do amor', 'Estilo cachorro', 'Estilo vagabundo'];
-    var listaRespostas2 = ['Maeria', 'cintia', 'Estilo vagabundo', 'thiaguinho'];
-    var listaRespostas3 = ['mc carol', 'tata luxz', 'Vida Loka', 'luciana'];
-    var listaRespostas4 = ['eiata', 'tanga', 'Eu sou 157','paola'];
-    var listaRespostasCerta = ['vou me matar', 'Estilo vagabundo', 'tata luxz', 'paola'];
+
+    var listaRespostas1 = ['Conquista', 'Desliga e vem', 'Rubi', 'Troca de calçada', '4', 'Da ponte pra cá', '8', 'Fotos', '4', 'Olhos coloridos', '2', 'lê lê lê', 'Melhor amigo'];
+    var listaRespostas2 = ['Nosso sonho', 'Telefone mudo', 'Não desliga o telefone', 'Estranho', '4','Vida Loka II', '8', 'Fada', '4', 'Joga fora', '2', 'Pode chorar', 'Palavras de amigo'];
+    var listaRespostas3 = ['Quero te encontrar', 'Gamei', 'Oh meu amor', 'Ausência', '4', 'A vida é desafio', '8', 'Na linha do tempo', '4', 'Carolina', '2', 'Chora, Me liga', 'Amizade é tudo'];
+    var listaRespostas4 = ['Chance', 'Alucinado', 'Me libera','Deprê', '4', 'Vida Loka', '8', 'Borboletas', '4', 'Sozinho', '2', 'Amor de balada', 'A amizade'];
+
+    var listaRespostasCerta = ['Nosso sonho', 'Desliga e vem', 'Oh meu amor', 'Ausência', '4', 'Da ponte pra cá', '8', 'Borboletas', '4', 'Olhos coloridos', '2', 'Chora, Me liga', 'Palavras de amigo'];
     var segundo=0;
     var pontos=0;
     var perguntaAtual = 0;
@@ -104,17 +109,12 @@
     function atualizarRelogio() {
         if(segundo<=30){
             temporizador.innerHTML = `${segundo} segundos`;
-            rodadas.innerHTML = `${perguntaAtual+1}/10`;
+            rodadas.innerHTML = `${perguntaAtual+1}/22`;
 
             if(segundo == 5 ){
                 habilitarBotoes();
-            } else 
-            
-            if(segundo >= 30 || resposta != ''){
-                resposta1.disabled = true;
-                resposta2.disabled = true;
-                resposta3.disabled = true;
-                resposta4.disabled = true;
+            } else if(segundo >= 30 || resposta != ''){
+                desabilitarBotoes();
                 proximaPergunta();
                 return;
     
@@ -134,12 +134,23 @@
         resposta4.disabled = false;
     }
 
+    function desabilitarBotoes(){
+        resposta1.disabled = true;
+        resposta2.disabled = true;
+        resposta3.disabled = true;
+        resposta4.disabled = true;
+    }
+
     function proximaPergunta(){
         resposta = '';
-        if(perguntaAtual < 3){
-            habilitarBotoes();
-            perguntaAtual+=1;
+        resposta1.style.color = 'white';
+        resposta2.style.color = 'white';
+        resposta3.style.color = 'white';
+        resposta4.style.color = 'white';
 
+        if(perguntaAtual < 23){
+
+            perguntaAtual+=1;
             audio.src = `${listaMusica[perguntaAtual]}`;
 
             resposta1.innerHTML = listaRespostas1[perguntaAtual];
@@ -153,8 +164,6 @@
 
             resposta4.innerHTML = listaRespostas4[perguntaAtual];
             resposta4.style.backgroundColor = 'black';
-
-
 
 
             temporizador.innerHTML = "";
@@ -196,22 +205,34 @@
     }
 
 
+    function respostaErrada(){
+        if(listaRespostasCerta[perguntaAtual] == listaRespostas1[perguntaAtual]){
+            resposta1.style.color = '#ca156c';
+        }else if(listaRespostasCerta[perguntaAtual] == listaRespostas2[perguntaAtual]){
+            resposta2.style.color = '#ca156c';
+        }else if (listaRespostasCerta[perguntaAtual] == listaRespostas3[perguntaAtual]){
+            resposta3.style.color = '#ca156c';
+        }else if(listaRespostas4[perguntaAtual] == listaRespostas4[perguntaAtual]){
+            resposta4.style.color = '#ca156c';
+        }
+    }
+
+
     function somaPontos(){
-       for(posicao = 0; posicao < listaRespostasCerta.length; posicao+=1){
+       for(var posicao = 0; posicao < listaRespostasCerta.length; posicao+=1){
             if(resposta==listaRespostasCerta[posicao]){
                 if(segundo <= 10 ){
                     pontos += 100;
-                    resultado.innerHTML = `pontos: ${pontos}`;
                 }else if(segundo <= 15){
                     pontos += 80;
-                    resultado.innerHTML = `pontos: ${pontos}`;
                 }else if(segundo <= 25){
                     pontos += 50;
-                    resultado.innerHTML = `pontos: ${pontos}`;
                 }else if(segundo <= 30){
                     pontos += 30;
-                    resultado.innerHTML = `pontos: ${pontos}`;
                 }    
+                resultado.innerHTML = `pontos: ${pontos}`;
+            }  else{
+            respostaErrada();
             }
         }
     }

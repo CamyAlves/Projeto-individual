@@ -15,7 +15,6 @@ body{
 }
 
 .rodada{
-    margin-top: 30px;
     display: flex;
     justify-content: center;
     color: white;
@@ -38,7 +37,7 @@ body{
 
 
 .resposta .container .box{
-    margin-top: 100px;
+    margin-top: 90px;
 }
 
 
@@ -88,4 +87,12 @@ a{
     color: white;
     margin-left: 90px;
     cursor: pointer;
+}
+
+
+.perguntas .fundo-claro .sub-titulo{
+    margin-top: 1px;
+    display: flex;
+    justify-content: center;
+    font-size: 23px;
 }
