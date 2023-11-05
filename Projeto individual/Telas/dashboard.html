@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="GlobalStyle.css">
+    <link rel="stylesheet" href="dashboardStyle.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+      
+    <div class="header" style="border-radius: 0px 0px 40px 0px;">
+        <div class="nav-bar"> 
+            <div class="container">
+                <img class="logo" src="img/logo.png" alt="" style="width: 200px;">
+                <input class="input_pesquisar" placeholder="pesquisar">
+                <div class="nav"> 
+                    <span class="nickname">User</span>
+                    <div class="foto-perfil"></div>
+                </div>     
+            </div>
+        </div>
+    </div>
+
+
+    <div style="display: flex;">
+        <div>
+            <div style="background-color: #1B1B1B; width: 200px; height: 870px;">
+                
+            </div>
+        </div>
+
+
+
+        <div class="container" style="margin-top: 15px;">
+            <span class="bem-vindo">Bem vindo, userNick!</span>
+            <div>
+                <div class="fundo-branco">
+                    <div class="fundo-cinza">
+                        <div class="titulo">
+                            <span class="como-jogar">Como jogar?</h1>
+                        </div>
+                        <p>1. <span class="span_rosa">Escutar</span> : Você tem aproximadamente 10 segundos  para identificar a música e a resposta correta.</p>
+                        <p>2. <span class="span_rosa" >Quatro opções de escolha</span> serão apresentadas na tela. Você deve escolher a opção que corresponde à música que acabou de ouvir <span class="span_rosa">o mais rápido possível</span>.</p>
+                        <p>3. Você tem apenas <span class="span_rosa">30 segundos</span> para fazer sua escolha. Quanto mais <span class="span_rosa">demorar menos pontos</span> ganhará.</p>
+                    </div>
+        
+                    <div class="jogar">
+                        <div style="margin-top: 40px">
+                            <div class="texto_jogar">
+                                <span class="span_logo">Life</span><span style=" color: #DD3A88; font-size: 48px;  font-weight: bold; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;"> Music</span>
+                            </div>
+
+                            <div class="texto_jogar">
+                                <span class="span_titulo">Divirta-se</span>
+                            </div>
+
+                            <div class="texto_jogar">    
+                                <span class="span_jogar">O mais importante é se divertir. Esse jogo é uma ótima maneira de testar seu conhecimento musical e desfrutar de sua música favorita. </span>
+                            </div>
+
+                            <div class="texto_jogar">
+                                <a href="telasJogo/tela-tema.html"><div class="btn-jogar">Jogar</div></a>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                
+                <div class="grafico">
+                    <div class="grafico_bola" >
+                        <div style="width: 350px; margin-left: 40px;"><canvas id="myChart1" style="position: relative; height: 350px; width: 350px;"></canvas></div>
+                    </div>
+                    <div class="grafico_barra">
+                        <div><canvas id="myChart" style="position: relative; height: 30vh; width: 35vw;"></canvas></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+  
+</body>
+</html>
+
+
+<script>
+    const bola = document.getElementById('myChart1');
+
+    new Chart(bola, {
+        type: 'doughnut',
+        data: {
+            labels: [
+                'Acertos',
+                'Erros'
+            ],
+            datasets: [{
+                label: 'Resultado',
+                data: [40, 60],
+                backgroundColor: [
+                    '#DD3A88',
+                    '#000000'
+                ],
+                hoverOffset: 4
+            }]
+        }  
+    });
+
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['MPB', 'POP', 'HIP-HOP-Rap', 'R&B', 'Rock', 'Pagode', 'Setanejo', 'Funk', 'KPop'],
+            datasets: [{
+                label: 'Acertos por tema',
+                data: [2, 4, 3, 1, 2, 1, 1, 4, 5],
+                borderWidth: 1,
+                borderColor: '#DD3A88',
+                backgroundColor: '#DD3A88',
+            }]
+        },
+
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+</script>

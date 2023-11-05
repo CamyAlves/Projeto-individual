@@ -1,0 +1,115 @@
+body{
+    background-color: #0B0B0B;
+}
+
+.bem-vindo{
+    margin-top: 10%;
+    color: white;
+    font-size: 40px;
+    margin-left: 40px;
+}
+
+.fundo-branco{
+    margin-left: 40px; 
+    background-color:#aaaaaa; 
+    height: 400px; 
+    margin-top: 20px; 
+    border-radius: 10px; 
+    display: flex; 
+    justify-content: space-around;
+}
+
+.fundo-cinza{
+    margin-left: 30px; 
+    background-color: #2E2E2E; 
+    width: 50%; height: 370px; 
+    margin-top: 10px; 
+    border-radius: 20px;
+}
+
+.como-jogar{
+    font-size: 30px; 
+    color: white; 
+    display: flex; 
+    justify-content: center;
+}
+
+p{
+    color: white; 
+    font-size: 17px; 
+    width: 650px;
+    margin: 40px;
+}
+
+.span_rosa{
+    color: #DD3A88;
+}
+
+.jogar{
+    display: flex; 
+    justify-content: center;
+}
+
+.texto_jogar{
+    display: flex; 
+    justify-content: center;
+}
+
+.span_jogar{
+    display: flex; 
+    justify-content: center; 
+    color: #2E2E2E; 
+    width: 500px;
+}
+
+.span_logo{
+    color: white; 
+    font-size: 48px;
+    font-weight: bold; 
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+}
+
+.span_titulo{
+    display: flex; 
+    justify-content: center; 
+    font-size: 36px; 
+    color: #414141;
+    margin-top: 30px;
+}
+
+.btn-jogar{
+    margin-top: 40px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    width: 130px; 
+    height: 35px; 
+    color: white; 
+    background-color: black; 
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.grafico{
+    display: flex; 
+    justify-content: space-between; 
+    width: 100%;
+}
+
+.grafico_bola{
+    margin-top: 20px; 
+    margin-left: 40px; 
+    width: 750px; 
+    height: 350px; 
+    background-color: #aaaaaa; 
+    border-radius: 20px;
+}
+
+.grafico_barra{
+    margin-top: 20px; 
+    margin-left: 30px; 
+    width: 700px; 
+    height: 350px; 
+    background-color: #aaaaaa; 
+    border-radius: 20px;
+}
