@@ -1,0 +1,34 @@
+body{
+    background-color: #0B0B0B;;
+    color: white;
+}
+
+
+.comojogar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.comojogar .container p{
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.tabela{
+    background-image: url(../img/borda-comojogar.png);
+    width: 715px;
+    height: 570px;
+}
+
+.btnVoltar{
+    width: 305px;
+    height: 35px;
+    border: 0px;
+    border-radius: 5px;
+    background-color: #DD3A88;
+    color: white;
+    font-size: 19px;
+    margin-top: 60px;
+}
