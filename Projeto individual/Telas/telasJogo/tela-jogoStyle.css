@@ -2,16 +2,31 @@ body{
     background-color: #0B0B0B;
 }
 
+.perguntas{
+    margin-top: 70px;
+}
+
+
 .titulo{
     display: flex;
     justify-content: center;
     color: white;
+    font-size: 36px;
 }
 
-span{
+.rodada{
+    margin-top: 30px;
     display: flex;
     justify-content: center;
     color: white;
+    font-size: 30px;
+}
+
+.temporizador{
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
 }
 
 
@@ -27,7 +42,7 @@ span{
 }
 
 
-button{
+.btn-resposta{
     margin-left: 30px;
     margin-right: 30px;
     background-color: black;
@@ -36,4 +51,41 @@ button{
     border-radius:10px; 
     width: 350px;
     height: 90px;
+}
+
+.btn-voltar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 40px;
+    background-color: #ca156c;
+    border-radius:7px;
+    color: white;
+    margin-right: 90px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.botoes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.btn-comecar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    height: 40px;
+    background-color: #ca156c;
+    border-radius:7px;
+    color: white;
+    margin-left: 90px;
+    cursor: pointer;
 }

@@ -9,7 +9,7 @@
 </head>
 <body onload="playMusic()">
 
-
+    
     <div class="header">
         <div class="nav-bar"> 
             <div class="container">
@@ -21,6 +21,7 @@
             </div>
         </div>
     </div>
+ 
 
     <audio id="musica" autoplay>
         <source id="source_musica" type="audio/mpeg">
@@ -54,8 +55,8 @@
             </div>    
         </div>
     </div> 
-
-   
+    
+    
     <div class="container">
         <div class="botoes">
             <div class="voltar">
@@ -66,8 +67,6 @@
             </div>
         </div>
     </div>
-    
-    
 
 </body>
 </html>
@@ -97,7 +96,7 @@
             audio.play();
             atualizarRelogio();
             btnComeca+=1;
-            div_comeca.innerHTML = ' <a href="tela-jogo.html"><div class="btn-comecar" onclick="comecarJogo()">Reiniciar</div></a>';
+            div_comeca.innerHTML = '';
         }
     }
 
