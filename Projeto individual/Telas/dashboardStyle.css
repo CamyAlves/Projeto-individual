@@ -1,115 +1,149 @@
 body{
     background-color: #0B0B0B;
-}
-
-.bem-vindo{
-    margin-top: 10%;
     color: white;
-    font-size: 40px;
-    margin-left: 40px;
 }
 
-.fundo-branco{
-    margin-left: 40px; 
-    background-color:#aaaaaa; 
-    height: 400px; 
-    margin-top: 20px; 
-    border-radius: 10px; 
+.lateral{
+    background-color: #1B1B1B; 
+    width: 140px; 
     display: flex; 
-    justify-content: space-around;
+    align-items: center; 
+    justify-content: space-between;
 }
 
-.fundo-cinza{
-    margin-left: 30px; 
-    background-color: #2E2E2E; 
-    width: 50%; height: 370px; 
-    margin-top: 10px; 
+.lateral .navbar-lateral{
+    display: flex; 
+    align-items: center; 
+    flex-direction: column;
+}
+
+.dashboard .container .fundo-branco{
+    background-color:#c0c0c0; 
+    display: flex; 
+    align-items: center; 
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
     border-radius: 20px;
 }
 
-.como-jogar{
-    font-size: 30px; 
-    color: white; 
+.dashboard .container .fundo-branco .box-cinza{
     display: flex; 
     justify-content: center;
 }
 
-p{
-    color: white; 
-    font-size: 17px; 
-    width: 650px;
-    margin: 40px;
+.fundo-branco .box-cinza .fundo-cinza{
+    background-color:#2E2E2E; 
+    display: flex; 
+    justify-content: center; 
+    width: 100%; 
+    margin: 20px; 
+    border-radius: 20px;
 }
 
-.span_rosa{
+.fundo-cinza .fundo-cinza-elementos{
+    width: 75%; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    margin: 30px;
+}
+
+.fundo-cinza .fundo-cinza-elementos .textoComoJogar{
+    font-size: 14px;
+}
+
+.fundo-cinza .fundo-cinza-elementos .span_rosa{
     color: #DD3A88;
 }
 
-.jogar{
-    display: flex; 
-    justify-content: center;
-}
-
-.texto_jogar{
-    display: flex; 
-    justify-content: center;
-}
-
-.span_jogar{
+.box-cinza .jogar{
     display: flex; 
     justify-content: center; 
-    color: #2E2E2E; 
-    width: 500px;
+    align-items: center; 
+    width: 88%;
 }
 
-.span_logo{
-    color: white; 
-    font-size: 48px;
+.jogar .jogar-elementos{
+    width: 80%;
+}
+
+.jogar .jogar-elementos .texto_jogar_logo{
+    display: flex; 
+    justify-content: center;
+}
+
+.texto_jogar_logo .span_logo{
+    font-size: 48px; 
     font-weight: bold; 
     text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
 }
 
-.span_titulo{
+.jogar .jogar-elementos .texto_jogar_Dvt{
     display: flex; 
     justify-content: center; 
-    font-size: 36px; 
-    color: #414141;
-    margin-top: 30px;
+    margin-top: 18px;
+    text-shadow: -1px -1px 0 #e794bd, 1px -1px 0 #e794bd, -1px 1px 0 #e794bd, 1px 1px 0 #e794bd;
+}
+
+.texto_jogar_Dvt .span_titulo{
+    font-size: 27px;
+    color: black;
+}
+
+.jogar .jogar-elementos .texto_jogar{
+    display: flex; 
+    justify-content: center;
+    margin-top: 10px;
+}
+
+
+.texto_jogar .span_jogar{
+    font-size: 14px;
+    color: #0B0B0B;
+}
+
+.botao_jogar_dash{
+    display: flex;
+    justify-content: center;
 }
 
 .btn-jogar{
-    margin-top: 40px;
+    background-color: black;
+    color: white;  
     display: flex; 
     justify-content: center; 
     align-items: center;
-    width: 130px; 
-    height: 35px; 
-    color: white; 
-    background-color: black; 
+    margin-top: 30px;
+    width: 124px; 
+    height: 28px; 
     border-radius: 10px;
+    font-size: 14px;
     cursor: pointer;
 }
 
-.grafico{
-    display: flex; 
-    justify-content: space-between; 
-    width: 100%;
-}
+/*Graficos*/
 
-.grafico_bola{
-    margin-top: 20px; 
-    margin-left: 40px; 
-    width: 750px; 
-    height: 350px; 
-    background-color: #aaaaaa; 
+.dashboard .fundo{
+    display: flex; 
     border-radius: 20px;
 }
 
-.grafico_barra{
-    margin-top: 20px; 
-    margin-left: 30px; 
-    width: 700px; 
-    height: 350px; 
-    background-color: #aaaaaa; 
+.fundo .graficoBola{
+    background-color: #c0c0c0; 
+    width: 50%; 
+    margin: 20px; 
+    border-radius: 20px;
+}
+
+.graficoBola .grafico_b{
+    width:205px; 
+    margin-left: 40px;
+}
+
+.fundo .graficoBarra{
+    background-color: #c0c0c0; 
+    width: 50%; 
+    margin: 20px; 
     border-radius: 20px;
 }
