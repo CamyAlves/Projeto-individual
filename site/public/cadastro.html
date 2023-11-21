@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>AquaTech | Cadastro</title>
+
+  <script src="./js/sessao.js"></script>
+
+  <link rel="icon" href="./assets/icon/favicon2.ico" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/CadastroStyle.css">
+  <link rel="stylesheet" href="css/GlobalStyle.css">
+</head>
+
+<body>
+  <!--header inicio-->
+  <div class="header">
+    <div class="nav-bar">
+      <div class="container">
+        <img src="../assets/img/logo.png" alt="" class="logo">
+        <div class="nav">
+          <span class="home">Home</span>
+          <button><a href="Login.html">Login</a></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--header fim-->
+
+  <!--
+                         Para inserir mais um campo, copie uma das inputs abaixo.
+                         Assim que inserir vá para o script abaixo.
+                     -->
+  <div class="cadastro">
+    <div class="formulario">
+      <div class="inputs">
+        <div class="container">
+          <span class="txtCadastro">Cadastro</span>
+          <div class="nome">
+            <p>Nome</p>
+            <input type="text" class="inputNome" id="input_nome" placeholder="     Nickname">
+            <p id="p_erroNome" class="msgErro"></p>
+          </div>
+          <div class="email">
+            <p>Email</p>
+            <input type="email" class="inputEmail" id="input_email" placeholder="     Email@email.com">
+            <p id="p_erroEmail" class="msgErro"></p>
+          </div>
+          <div class="dataNascimento">
+            <p>Data de nascimento</p>
+            <input type="date" class="inputNasc" id="input_nasc" placeholder="     dd-mm-aaaa">
+            <p id="p_erroData" class="msgErro"></p>
+          </div>
+          <div class="senha">
+            <p>Senha</p>
+            <input type="password" class="inputSenha" id="input_senha" placeholder="     **********">
+            <p id="p_erroSenha" class="msgErro"></p>
+          </div>
+          <div class="ConfSenha">
+            <p>Confirmar senha</p>
+            <input type="password" class="inputConfSenha" id="input_confSenha" placeholder="     **********">
+            <p id="p_erroConfSenha" class="msgErro"></p>
+          </div>
+          <button id="botao" class="btnCadastro" onclick="cadastrar()">Cadastrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--footer inicio-->
+  <div class="footer">
+    <div class="container">
+      <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
+      <span class="version">v1.0.0</span>
+    </div>
+  </div>
+  <!--footer fim-->
+</body>
+
+</html>
+
+<script>
+  function cadastrar() {
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nome = input_nome.value;
+    var email = input_email.value;
+    var dataNasc = input_nasc.value;
+    var senha = input_senha.value;
+    var confirmaSenha = input_confSenha.value;
+
+    nome.replaceAll(" ","");
+    var txtObrigatorio = '*Obrigatório';
+    var validaEmail = /^[A-Za-z0-9.-]{3,}@[A-Za-z0-9]+\.[A-Za-z]{2,}$/;
+    var validaSenha = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[.@$!*?&])[A-Za-z0-9@$!*?&.-]{8,}$/;
+
+    p_erroNome.innerHTML = '';
+    p_erroEmail.innerHTML = '';
+    p_erroData.innerHTML = '';
+    p_erroSenha.innerHTML = '';
+    p_erroConfSenha.innerHTML = '';
+   
+
+    if (nome == "") {
+      p_erroNome.innerHTML = txtObrigatorio;  
+    }
+
+    if (email == "") {
+      p_erroEmail.innerHTML = txtObrigatorio;
+    } else if (!validaEmail.test(email)) {
+      p_erroEmail.innerHTML = '*Email inválido';
+    }
+
+    if (dataNasc == "") {
+      p_erroData.innerHTML = txtObrigatorio; 
+    }
+
+    if (senha == "") {
+      p_erroSenha.innerHTML = txtObrigatorio;
+     
+    } else if (!validaSenha.test(senha)) {
+      p_erroSenha.innerHTML = '*Deve conter pelo menos 1 letra maiúscula, 1 letra minúscula, 1 caractere especial, 1 número e ter no mínimo 8 caracteres.';
+      p_erroSenha.style.fontSize = "11px";
+    }
+
+    if (confirmaSenha == "") {
+      p_erroConfSenha.innerHTML = txtObrigatorio;
+  
+    } else if (senha != confirmaSenha) {
+      p_erroConfSenha.innerHTML = '*As senhas não correpondem';
+    }
+
+    if ( p_erroNome.innerHTML != '' || p_erroEmail.innerHTML != '' || p_erroData.innerHTML != '' || p_erroSenha.innerHTML != '' || p_erroConfSenha.innerHTML != ''){
+      botao.style.marginTop = "8px";
+      return false;
+    }else{
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nome,
+        emailServer: email,
+        dataNascServer: dataNasc,
+        senhaServer: senha
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          alert(
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+}
+</script>

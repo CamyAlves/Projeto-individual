@@ -1,0 +1,166 @@
+body{
+    background-color: #0B0B0B;
+    color: white;
+}
+
+.lateral{
+    background-color: #1B1B1B; 
+    width: 140px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+}
+
+.lateral .navbar-lateral{
+    display: flex; 
+    align-items: center; 
+    flex-direction: column;
+}
+
+.dashboard .container .fundo-branco{
+    background-color:#c0c0c0; 
+    display: flex; 
+    align-items: center; 
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 20px;
+}
+
+.dashboard .container .fundo-branco .box-cinza{
+    display: flex; 
+    justify-content: center;
+}
+
+.fundo-branco .box-cinza .fundo-cinza{
+    background-color:#2E2E2E; 
+    display: flex; 
+    justify-content: center; 
+    width: 100%; 
+    margin: 20px; 
+    border-radius: 20px;
+}
+
+.fundo-cinza .fundo-cinza-elementos{
+    width: 75%; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    margin: 30px;
+}
+
+.fundo-cinza .fundo-cinza-elementos .textoComoJogar{
+    font-size: 14px;
+}
+
+.fundo-cinza .fundo-cinza-elementos .span_rosa{
+    color: #DD3A88;
+}
+
+.box-cinza .jogar{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    width: 88%;
+}
+
+.jogar .jogar-elementos{
+    width: 80%;
+}
+
+.jogar .jogar-elementos .texto_jogar_logo{
+    display: flex; 
+    justify-content: center;
+}
+
+.texto_jogar_logo .span_logo{
+    font-size: 48px; 
+    font-weight: bold; 
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+}
+
+.texto_jogar_logo .span_logo_rosa{
+    font-size: 48px; 
+    font-weight: bold; 
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    color: #DD3A88;
+}
+
+.jogar .jogar-elementos .texto_jogar_Dvt{
+    display: flex; 
+    justify-content: center; 
+    margin-top: 18px;
+    text-shadow: -1px -1px 0 #e794bd, 1px -1px 0 #e794bd, -1px 1px 0 #e794bd, 1px 1px 0 #e794bd;
+}
+
+.texto_jogar_Dvt .span_titulo{
+    font-size: 27px;
+    color: black;
+}
+
+.jogar .jogar-elementos .texto_jogar{
+    display: flex; 
+    justify-content: center;
+    margin-top: 10px;
+}
+
+
+.texto_jogar .span_jogar{
+    font-size: 14px;
+    color: #0B0B0B;
+}
+
+.botao_jogar_dash{
+    display: flex;
+    justify-content: center;
+}
+
+.btn-jogar{
+    background-color: #DD3A88;
+    color: white;  
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    margin-top: 30px;
+    width: 124px; 
+    height: 28px; 
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/*Graficos*/
+
+.dashboard .fundo{
+    display: flex; 
+    border-radius: 20px;
+}
+
+.fundo .graficoBola{
+    background-color: #c0c0c0; 
+    width: 50%; 
+    margin: 20px; 
+    border-radius: 20px;
+    display: flex;
+}
+
+.graficoBola .grafico_b{
+    width:205px; 
+    margin-left: 40px;
+}
+
+.fundo .graficoBarra{
+    background-color: #c0c0c0; 
+    width: 50%; 
+    margin: 20px; 
+    border-radius: 20px;
+}
+
+.hello{
+    width: 500px;
+    margin-left: 10px;
+}
+
+.dash{
+    display: flex;
+}

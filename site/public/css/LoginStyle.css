@@ -1,0 +1,101 @@
+body{
+    background-image: url(../assets/img/fundo-racionais.jpg);
+    color: white;
+}
+
+
+
+.login{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 4%;
+}
+
+/* Formulario */
+
+.formulario{
+    background-image: url(../assets/img/borda-login.png);
+    border-radius: 20px;
+    width: 465px;
+    height: 508px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputs{
+    display: flex;
+    margin: 5%;
+    font-size: 15px;
+}
+
+.inputs .container .txtLogin{
+    margin-top: 20px;
+    font-size: 34px;
+    display: flex;
+    justify-content: center;
+}
+
+.inputs .container p{
+    margin-top: 37px;
+    margin-bottom: 7px;
+}
+
+.inputs .container input{
+    border: 0px;
+    border-left: 7px solid #DD3A88;
+    border-radius: 8px;
+    background-color: #1B1B1B;
+    height: 40px;
+    width: 305px;
+    color: white;
+    font-size: 14px;
+}
+
+
+
+
+
+/* Botão Login */
+
+.caixa{
+    margin-top: 20px;
+}
+
+.caixa span{
+    margin-left: 4px;
+}
+
+.btnLogin{
+    width: 305px;
+    height: 30px;
+    border: 0px;
+    border-radius: 5px;
+    background-color: #DD3A88;
+    color: white;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+
+
+
+
+/* Titulo */
+
+.titulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.titulo .container span{
+    font-size: 93px;
+}
+
+.titulo .container .bemVindo{
+    font-size: 36px;
+    display: flex;
+    justify-content: center;
+}
+
+

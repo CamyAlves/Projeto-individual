@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo</title>
+    <link rel="stylesheet" href="css/GlobalStyle.css">
+    <link rel="stylesheet" href="css/tela-jogoStyle.css">
+</head>
+<body>
+
+
+    <div class="header">
+        <div class="nav-bar"> 
+            <div class="container">
+                <img class="logo" src="../img/logo.png" alt="" style="width: 200px;">
+                <div class="nav"> 
+                    <span class="nickname">User</span>
+                    <div class="foto-perfil"></div>
+                </div>     
+            </div>
+        </div>
+    </div>
+
+    <audio id="musica">
+        <source id="source_musica" type="audio/mpeg">
+    </audio>
+
+    <video id="gifComecar" class="gif-Comecar"></video>
+
+    <div class="perguntas">
+        <div class="fundo-claro">
+
+            <span id="rodadas" class="rodada"></span>
+            
+            <div class="titulo">
+                <span style="margin-top: 10px;">Qual é a <span style="color: #ca156c;">música?</span></span>
+            </div>
+            <div class="sub-titulo">
+                <p class="">Nacional</p>
+            </div>
+            <span id="temporizador" class="temporizador"></span>
+            
+            
+            <div class="resposta">
+                <div class="container">
+                    <div class="box">
+                        <button id="resposta1" class="btn-resposta" onclick="button1()" disabled>.</button>
+                        <button id="resposta2" class="btn-resposta" onclick="button2()" disabled>.</button>
+                    </div>
+                    
+                    <div class="box">
+                        <button id="resposta3" class="btn-resposta" onclick="button3()" disabled>.</button>
+                        <button id="resposta4" class="btn-resposta" onclick="button4()" disabled>.</button><br>
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </div> 
+
+   
+    <div class="container">
+        <div class="botoes">
+            <div class="voltar">
+                <div class="btn-voltar" onclick="voltar()">Voltar</div>
+            </div>
+            <div id="div_comeca" class="comeca">
+                <div class="btn-comecar" onclick="comecarJogo()">Começar Jogo</div>
+            </div>
+        </div>
+        <div id="resultado" class="pontuacao">Pontos: 0</div>
+    </div>
+    
+    
+
+</body>
+</html>
+
+<script>
+     var segundo = 0;
+    var perguntaAtual = 0;
+    var respostaJogo = '';
+    var btnComecar = 1;
+
+    var mpb = Number(0);
+    var rap = Number(0);
+    var pop = Number(0);
+    var funk = Number(0);
+    var rock = Number(0);
+    var forro = Number(0);
+    var pagode = Number(0);
+    var sertanejo = Number(0);
+    var rEb = null;
+    var hiphop = null;
+    var kpop = null;
+
+
+    var listaMusica = ['assets/musica/Man in the Mirror.mp3', 'assets/musica/Cigana.mp3', 'assets/musica/destinys-child-dangerously-in-love.mp3', 'assets/musica/justin-bieber-one-time.mp3', 'assets/musica/water-tyle.mp3'];
+    var listaRespostas1 = ['Conquista', 'ela dança eu danço', 'Rubi', 'Troca de calçada', 'mania', 'Da ponte pra cá', 'mainha', 'o amor vai vencer'];
+    var listaRespostas2 = ['Nosso sonho', 'juntos pela eternidade', 'Não desliga o telefone', 'Estranho', 'linda de mais', 'Vida Loka II', 'viva a vida', 'juntos'];
+    var listaRespostas3 = ['Quero te encontrar', 'mulher de lei', 'Oh meu amor', 'Ausência', 'sempre assim', 'A vida é desafio', 'sinta o amor', 'sei q me ama'];
+    var listaRespostas4 = ['Chance', 'sintonia do amor', 'Me libera', 'Deprê', 'ainda te amo', 'Vida Loka', 'noitecer', 'ainda vou exisir'];
+
+    var listaRespostasCerta = ['Nosso sonho', 'juntos pela eternidade', 'Não desliga o telefone', 'Ausência', 'ainda te amo', 'Da ponte pra cá', 'noitecer', 'sei q me ama'];
+    var listaRespostasCertaGenero = { 'pop': ['Nosso sonho'], 'mpb': ['juntos pela eternidade'], 'rock': ['Não desliga o telefone'], 'rap': ['Ausência'], 'funk': ['ainda te amo'], 'forro': ['Da ponte pra cá'], 'pagode': ['noitecer'], 'sertanejo': ['sei q me ama '] };
+
+    var audio = document.getElementById("musica");
+
+
+    function comecarJogo() {
+        if (btnComecar == 1) {
+            gifComecar.innerHTML = '<source src="assets/comecar.mp4" type="video/mp4">'
+            gifComecar.style.display = 'flex';
+            gifComecar.play();
+
+            setTimeout(function () {
+                gifComecar.style.display = 'none';
+                gifComecar.innerHTML = '';
+                atualizarRelogio();
+                audio.play();
+            }, 2500);
+
+            btnComecar += 1;
+        }
+
+        resposta1.innerHTML = listaRespostas1[perguntaAtual];
+        resposta2.innerHTML = listaRespostas2[perguntaAtual];
+        resposta3.innerHTML = listaRespostas3[perguntaAtual];
+        resposta4.innerHTML = listaRespostas4[perguntaAtual];
+        resposta1.style.color = 'white';
+        resposta2.style.color = 'white';
+        resposta3.style.color = 'white';
+        resposta4.style.color = 'white';
+        audio.src = `${listaMusica[perguntaAtual]}`;
+
+        div_comeca.innerHTML = ' <a href="tela-jogo.html"><div class="btn-comecar" onclick="comecarJogo()">Reiniciar</div></a>';
+    }
+
+    function atualizarRelogio() {
+        if (segundo <= 30) {
+            temporizador.innerHTML = `${segundo} segundos`;
+            rodadas.innerHTML = `${perguntaAtual + 1}/10`;
+
+            if (segundo == 1) {
+                habilitarBotoes();
+            } else if (segundo >= 30 || respostaJogo != '') {
+                desabilitarBotoes();
+                proximaPergunta();
+                return;
+
+
+            }
+
+            segundo += 1;
+            setTimeout(atualizarRelogio, 1000);
+        }
+    }
+
+
+    function habilitarBotoes() {
+        resposta1.disabled = false;
+        resposta2.disabled = false;
+        resposta3.disabled = false;
+        resposta4.disabled = false;
+    }
+
+    function desabilitarBotoes() {
+        resposta1.disabled = true;
+        resposta2.disabled = true;
+        resposta3.disabled = true;
+        resposta4.disabled = true;
+    }
+
+    function proximaPergunta() {
+
+
+
+        respostaJogo = '';
+        resposta1.style.color = 'white';
+        resposta2.style.color = 'white';
+        resposta3.style.color = 'white';
+        resposta4.style.color = 'white';
+
+        if (perguntaAtual < 8) {
+            perguntaAtual += 1;
+
+            audio.src = `${listaMusica[perguntaAtual]}`;
+
+            resposta1.innerHTML = listaRespostas1[perguntaAtual];
+            resposta1.style.backgroundColor = 'black';
+
+            resposta2.innerHTML = listaRespostas2[perguntaAtual];
+            resposta2.style.backgroundColor = 'black';
+
+            resposta3.innerHTML = listaRespostas3[perguntaAtual];
+            resposta3.style.backgroundColor = 'black';
+
+            resposta4.innerHTML = listaRespostas4[perguntaAtual];
+            resposta4.style.backgroundColor = 'black';
+
+
+            temporizador.innerHTML = "";
+            segundo = 0;
+            audio.play();
+            atualizarRelogio();
+        } else {
+            console.log("sessionStorage.ID_USUARIO:", sessionStorage.ID_USUARIO);
+            fetch("/usuarios/pontuacao", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    mpbServer: mpb,
+                    rapServer: rap,
+                    popServer: pop,
+                    funkServer: funk,
+                    rockServer: rock,
+                    forroServer: forro,
+                    pagodeServer: pagode,
+                    sertanejoServer: sertanejo,
+                    rEbServer: forro,
+                    hiphopServer: pagode,
+                    kpopServer: sertanejo,
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+                    if (resposta.ok) {
+                        return resposta.json();
+                    } else {
+                        throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+
+                .then(function (json) {
+                    console.log("sessionStorage.ID_USUARIO (antes de /usuarios/partida):", sessionStorage.ID_USUARIO);
+                    // Define sessionStorage.ID_PONTO
+                    sessionStorage.ID_PONTO = json.idPonto;
+                    return fetch("/usuarios/partida", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            // crie um atributo que recebe o valor recuperado aqui
+                            // Agora vá para o arquivo routes/usuario.js
+                            temaPartidaServer: 'internacional',
+                            fkPontoServer: sessionStorage.ID_PONTO,
+                            fkUsuarioServer: sessionStorage.ID_USUARIO
+
+                            
+                        }),
+                    });
+                })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+                    if (resposta.ok) {
+
+                        alert(
+                            "Pontuação realizado com sucesso! Redirecionando para tela de Login...");
+                        limparFormulario();
+                    } else {
+                        throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+
+                });
+
+            return false;
+        }
+    }
+
+
+    function button1() {
+        resposta1.disabled = true;
+        resposta1.style.backgroundColor = '#DD3A88';
+        respostaJogo = listaRespostas1[perguntaAtual];
+        somaPontos();
+    }
+
+    function button2() {
+        resposta2.disabled = true;
+        resposta2.style.backgroundColor = '#DD3A88';
+        respostaJogo = listaRespostas2[perguntaAtual];
+        somaPontos();
+    }
+
+    function button3() {
+        resposta3.disabled = true;
+        resposta3.style.backgroundColor = '#DD3A88';
+        respostaJogo = listaRespostas3[perguntaAtual];
+        somaPontos();
+    }
+
+    function button4() {
+        resposta4.disabled = true;
+        resposta4.style.backgroundColor = '#DD3A88';
+        respostaJogo = listaRespostas4[perguntaAtual];
+        somaPontos();
+    }
+
+
+    function respostaErrada() {
+        if (listaRespostasCerta[perguntaAtual] == listaRespostas1[perguntaAtual]) {
+            resposta1.style.color = '#ca156c';
+            setTimeout(function () {
+                resposta1.style.color = '#ffffff';
+            }, 5000);
+        } else if (listaRespostasCerta[perguntaAtual] == listaRespostas2[perguntaAtual]) {
+            resposta2.style.color = '#ca156c';
+            setTimeout(function () {
+                resposta2.style.color = '#ffffff';
+            }, 5000);
+        } else if (listaRespostasCerta[perguntaAtual] == listaRespostas3[perguntaAtual]) {
+            resposta3.style.color = '#ffffff';
+            setTimeout(function () {
+                resposta3.style.color = '#ffffff';
+            }, 5000);
+        } else if (listaRespostas4[perguntaAtual] == listaRespostas4[perguntaAtual]) {
+            resposta4.style.color = '#ca156c';
+            setTimeout(function () {
+                resposta4.style.color = '#ffffff';
+            }, 5000);
+        }
+    }
+
+
+    function somaPontos() {
+
+        var pontos = 0;
+
+        for (var posicao = 0; posicao < listaRespostasCerta.length; posicao += 1) {
+            if (respostaJogo == listaRespostasCerta[posicao]) {
+                if (segundo <= 2) {
+                    pontuacaoPorGenero(pontos = 100);
+                    break;
+                } else if (segundo <= 5) {
+                    pontuacaoPorGenero(pontos = 90);
+                    break;
+                } else if (segundo <= 10) {
+                    pontuacaoPorGenero(pontos = 85);
+                    break;
+                } else if (segundo <= 13) {
+                    pontuacaoPorGenero(pontos = 80);
+                    break;
+                } else if (segundo <= 18) {
+                    pontuacaoPorGenero(pontos = 75);
+                    break;
+                } else if (segundo <= 25) {
+                    pontuacaoPorGenero(pontos = 60);
+                    break;
+                } else if (segundo <= 30) {
+                    pontuacaoPorGenero(pontos = 40);
+                    break;
+                }
+            } else {
+                respostaErrada();
+                break;
+            }
+        }
+    }
+
+    function pontuacaoPorGenero(pontos) {
+
+        for (var posicaoGenero = 0; posicaoGenero < listaRespostasCertaGenero['pop'].length; posicaoGenero += 1) {
+            if (listaRespostasCertaGenero['pop'][posicaoGenero]) {
+                pop += pontos;
+                resultado.innerHTML = `pontos: ${pop}`;
+                break;
+            } else if (listaRespostasCertaGenero['mpb'][posicaoGenero]) {
+                mpb += pontos;
+                resultado.innerHTML = `pontos: ${pop}`;
+                break;
+            }
+        }
+    }
+
+    function voltar() {
+        window.location = "tela-tema.html";
+    }
+
+</script>

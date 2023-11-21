@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AquaTech | Login</title>
+
+    <script src="./js/sessao.js"></script>
+
+    <link rel="icon" href="./assets/icon/favicon2.ico">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/GlobalStyle.css">
+    <link rel="stylesheet" href="css/LoginStyle.css">
+</head>
+
+<body>
+
+    <!--Header-->
+
+    <div class="header">
+        <div class="nav-bar">
+            <div class="container">
+                <img src="../assets/img/logo.png" alt="" class="logo">
+                <div class="nav">
+                    <span class="home">Home</span>
+                    <button><a href="Cadastro.html">Cadastro</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="ModalInvalido" class="modalErro">
+        <!-- Conteúdo do modal -->
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <div class="modal-informacao">
+                <span id="span_modalErro"></span>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="login">
+        <div class="formulario">
+            <div class="inputs">
+                <div class="container">
+                    <span class="txtLogin">Log In</span>
+                    <div class="email">
+                        <p>Email</p>
+                        <input type="email" class="inputEmail" id="input_email" placeholder="     Email@email.com">
+                        <p id="p_erroEmail" class="msgErro"></p>
+                    </div>
+                    <div class="senha">
+                        <p>Senha</p>
+                        <input type="password" class="inputSenha" id="input_senha" placeholder="     **********">
+                        <p id="p_erroSenha" class="msgErro"></p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btnLogin" onclick="entrar()">Login</button>
+            <div class="caixa">
+                <span style="font-size: 13px;">Cadastre <a href="cadastro.html">aqui</a></span>
+            </div>
+        </div>
+
+        <div class="titulo">
+            <div class="container">
+                <span>Life<span style="color: #DD3A88;">Music</span></span>
+                <span class="bemVindo">Bem vindo de volta!!</span>
+            </div>
+        </div>
+    </div>
+
+    <!--footer inicio-->
+    <div class="footer">
+        <div class="container">
+            <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
+            <span class="version">v1.0.0</span>
+        </div>
+    </div>
+    <!--footer fim-->
+
+</body>
+
+</html>
+
+<script>
+
+    function abrirModalFotoPerfil() {
+        myModal.style.display = 'flex';
+        span_modalErro.innerHTML = 'Cadastro não existe';
+    }
+
+    function fecharModal() {
+        myModal.style.display = 'none';
+    }
+
+
+    function entrar() {
+
+        var email = input_email.value;
+        var senha = input_senha.value;
+
+        if (email == "") {
+            p_erroEmail.innerHTML = "*Obrigatório";
+        } 
+        if (senha == "") {
+            p_erroSenha.innerHTML = "*Obrigatório"
+        }
+
+        console.log("FORM LOGIN: ", email);
+        console.log("FORM SENHA: ", senha);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: email,
+                senhaServer: senha
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
+
+                    alert("Login bem-sucedido! Redirecionando para a tela de dashboard...");
+                    setTimeout(function () {
+                        window.location = "./dashboard/cards.html";
+                    }, 1000); // apenas para exibir o loading
+
+                    console.log('n sei mais nada')
+                });
+
+            } else {
+                abrirModalFotoPerfil();
+                console.log("Houve um erro ao tentar realizar o login!");
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+
+</script>

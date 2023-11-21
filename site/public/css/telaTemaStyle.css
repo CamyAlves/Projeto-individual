@@ -1,0 +1,103 @@
+body{
+    background-color: #0a0a0a;
+    color: white;
+}
+
+.opcoes{
+    margin-top: 30px;
+}
+
+.opcoes .container{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.box{
+    display: flex;
+    justify-content: center;
+    background-color: #030303;
+    background-image: url(../img/borda-temas.png);
+    border-radius: 20px;
+    width: 30%;
+}
+
+.texto{
+    display: flex;
+    flex-direction: column;
+}
+
+.nacional{
+    margin-top: 40px;
+}
+
+.opcoes .container .box .titulo{
+    display: flex;
+    justify-content: center;
+    font-size: 27px;
+
+}
+
+.opcoes .container .box .sub-titulo{
+    display: flex;
+    justify-content: center;
+    font-size: 17px;
+    color: #DD3A88;
+}
+
+.texto .texto_nacional{
+    font-size: 15px;
+    width: 70%;
+    margin-right: 70px;
+    margin-left: 70px;
+}
+
+.opcoes .container .box .texto .temas{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.opcoes .container .box .texto .temas .temas-box{
+    display: flex;
+    flex-direction: column;
+}
+
+.opcoes .container .box .texto .temas .tema{
+    font-size: 15px;
+
+}
+
+.opcoes .container .box .texto .botao{
+    display: flex;
+    justify-content: center;
+}
+
+.opcoes .container .box .texto .btn-jogar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    background-color: #DD3A88;
+    width: 115px;
+    height: 24px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.botaoVoltar{
+    display: flex;
+    justify-content: center;
+}
+
+.btnVoltar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    background-color:#2e2e2e;
+    background-image: url(../img/btn-voltar-dash.png);
+    width: 160px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 14px;
+}
