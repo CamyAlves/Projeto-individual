@@ -98,6 +98,7 @@
     var rEb = null;
     var hiphop = null;
     var kpop = null;
+    var pontuacaoTotal = 0;
 
 
     var listaMusica = ['assets/musica/Man in the Mirror.mp3', 'assets/musica/Cigana.mp3', 'assets/musica/destinys-child-dangerously-in-love.mp3', 'assets/musica/justin-bieber-one-time.mp3', 'assets/musica/water-tyle.mp3'];
@@ -229,6 +230,7 @@
                     rEbServer: forro,
                     hiphopServer: pagode,
                     kpopServer: sertanejo,
+                    pontuacaoTotalServer: pontuacaoTotal
                 }),
             })
                 .then(function (resposta) {
@@ -383,10 +385,10 @@
                 break;
             }
         }
+        pontuacaoTotal = mpb + rap + pop + funk + rock + forro + pagode + sertanejo;
     }
 
     function voltar() {
         window.location = "tela-tema.html";
     }
-
 </script>
