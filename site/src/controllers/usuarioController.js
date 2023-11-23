@@ -32,11 +32,12 @@ function autenticar(req, res) {
                             res.status(204).json({ aquarios: [] });
                         }*/
                         /*});*/
-                        if (resultadoAutenticar.length == 0) {
-                            res.status(403).send("Email e/ou senha inválido(s)");
-                        } else {
-                            res.status(403).send("Mais de um usuário com o mesmo login e senha!");
-                        }
+                    }
+
+                    if (resultadoAutenticar.length == 0) {
+                        res.status(403).send("Email e/ou senha inválido(s)");
+                    } else {
+                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
                     }
                 }
             ).catch(
@@ -100,6 +101,7 @@ function pontuacao(req, res) {
     var rEb = req.body.rEbServer;
     var hiphop = req.body.hiphopServer;
     var kpop = req.body.kpopServer;
+    var pontuacaoTotal =req.body.pontuacaoTotalServer
 
     // Faça as validações dos valores
     if (mpb == undefined) {
@@ -118,14 +120,16 @@ function pontuacao(req, res) {
         res.status(400).send("Sua pagode está undefined!");
     } else if (sertanejo == undefined) {
         res.status(400).send("Sua sertanejo está undefined!");
+    }else if(pontuacaoTotal == undefined){
+        res.status(400).send("Sua pontuacaoTotal está undefined!");
     }
 
     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-    usuarioModel.pontuacao(mpb, rap, pop, funk, rock, forro, pagode, sertanejo, rEb, hiphop, kpop)
+    usuarioModel.pontuacao(mpb, rap, pop, funk, rock, forro, pagode, sertanejo, rEb, hiphop, kpop, pontuacaoTotal)
         .then(
             function (resultado) {
                 var idPonto = resultado.insertId;
-                res.json({idPonto: idPonto});
+                res.json({ idPonto: idPonto });
             }
         ).catch(
             function (erro) {
@@ -151,9 +155,9 @@ function partida(req, res) {
     // Faça as validações dos valores
     if (temaPartida == undefined) {
         res.status(400).send("O tema da partida está undefined!");
-    }else if(fkPonto == undefined){
+    } else if (fkPonto == undefined) {
         res.status(400).send("A fkPonto está undefined!");
-    }else if(fkUsuario == undefined){
+    } else if (fkUsuario == undefined) {
         res.status(400).send("A fkPonto está undefined!");
     }
     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
@@ -162,7 +166,7 @@ function partida(req, res) {
         res.status(400).send("A fkUsuario está undefined!");
         return; // Adicione essa linha para sair da função aqui, pois não faz sentido prosseguir se fkUsuario não estiver definido.
     }
-    
+
     usuarioModel.partida(temaPartida, fkPonto, fkUsuario)
 
         .then(
