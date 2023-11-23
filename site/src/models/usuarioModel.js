@@ -22,13 +22,13 @@ function cadastrar(nome, email, senha, dataNasc) {
     return database.executar(instrucao);
 }
 
-function pontuacao(mpb, rap, pop, funk, rock, forro, pagode, sertanejo, rEb, hiphop, kpop) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pontuacao():", mpb, rap, pop, funk, rock, forro, pagode, sertanejo, rEb, hiphop, kpop);
+function pontuacao(mpb, rap, pop, funk, rock, forro, pagode, sertanejo, rEb, hiphop, kpop, pontuacaoTotal) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pontuacao():", mpb, rap, pop, funk, rock, forro, pagode, sertanejo, rEb, hiphop, kpop, pontuacaoTotal);
     
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucao = `
-        INSERT INTO ponto (mpb, rap, pop, funk, rock, forro, pagode, sertanejo, rEb, hiphop, kpop) VALUES ('${mpb}', '${rap}', '${pop}', '${funk}', '${rock}', '${forro}', '${pagode}', '${sertanejo}', '${rEb}', '${hiphop}', '${kpop}');
+        INSERT INTO ponto (mpb, rap, pop, funk, rock, forro, pagode, sertanejo, rEb, hiphop, kpop, pontuacaoTotal) VALUES ('${mpb}', '${rap}', '${pop}', '${funk}', '${rock}', '${forro}', '${pagode}', '${sertanejo}', '${rEb}', '${hiphop}', '${kpop}', '${pontuacaoTotal}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
