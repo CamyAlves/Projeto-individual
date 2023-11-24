@@ -1,0 +1,198 @@
+body{
+    background-image: url(../assets/img/fundo-home.jpg);
+}
+
+ /* banner */
+
+.banner{
+    background-image: url(../assets/img/banner-home.gif); 
+    width: 100%; 
+    height: 620px;
+}
+
+.banner .conteudo-banner{
+    display: flex; 
+    height: 100%;
+    margin-top: 150px; 
+    margin-left: 100px;
+}
+
+.banner .conteudo-banner .conteudo{
+    display: flex; 
+    flex-direction: column;
+}
+
+.banner .conteudo-banner .conteudo .span-banner{
+    font-size: 40px; 
+    width: 800px;
+}
+
+.banner .conteudo-banner .conteudo .div-btn-banner{
+    display: flex; 
+    margin-top: 40px; 
+    margin-left: 40px;
+}
+
+.banner .conteudo-banner .conteudo .div-btn-banner .btn-banner{
+    background-color: black; 
+    width: 140px; 
+    height: 30px; 
+    border-radius: 10px; 
+    box-shadow: 1px 1px 0px 0px #fff; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+.btn-nav-home{
+    margin-right: 12px;
+}
+
+
+/* titulo */
+
+.oque-musica{
+    display: flex; 
+    justify-content: center; 
+    width: 100%; 
+    margin-top: 30px;
+}
+
+.container{
+    display: flex; 
+    justify-content: center;
+}
+
+.container .titulo{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: #000000; 
+    box-shadow: 10px 10px 0px 0px #DD3A88; 
+    width: 80%;
+    height: 80px; 
+    width: 520px;
+}
+
+.container .titulo .span-titulo{
+    font-size: 25px;
+}
+
+.beneficio{
+    display: flex; 
+    flex-direction:column; 
+    width: 100%; 
+    margin-top: 100px;
+}
+
+
+
+.saude{
+    display: flex; 
+    justify-content: center; 
+    margin-top: 50px;
+}
+
+.titulo-beneficio{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    color: #000; 
+    height: 50px; 
+    width: 300px;
+}
+
+.titulo-beneficio .span-titulo-beneficio{
+    font-size: 27px; 
+    color: #DD3A88;
+}
+
+
+
+
+
+
+
+
+
+
+
+.conteudo-oq-musica{
+    display: flex; 
+    justify-content: center;
+    margin-top: 70px;
+}
+
+.conteudo-oq-musica .box-conteudo{
+    display: flex;
+    justify-content: center;
+    width: 84%;
+}
+
+
+.conteudo-oq-musica .box-conteudo .conteudo1 {
+    color: #DD3A88;
+}
+
+.conteudo-oq-musica .box-conteudo .conteudo1 .texto-oq-musica{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.conteudo-oq-musica .box-conteudo .conteudo1  .p-oq-musica{
+    margin-left: 10px;
+    font-size: 19px; 
+    color: #DD3A88;
+    width: 80%;
+}
+
+
+
+
+.box-Genero{
+    perspective: 1000px;
+    width: 27%;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+}
+
+.conteudo:hover .mpb-img{
+    transform: rotateY(-180deg);
+}
+
+.conteudo:hover .mpb-txt{
+    transform: rotateY(0deg);
+}
+
+.mpb-img,
+.mpb-txt{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo do conteúdo dentro da div */
+.mpb-img {
+    background-color: #e7e7e7;
+    color: black;
+    border: 3px solid black;
+}
+
+.mpb-txt{
+    background-color: rgb(32, 32, 32);
+    color: white;
+    transform: rotateY(180deg);
+    border: 3px solid #DD3A88;
+}
+
+.p_genero{
+    width: 320px; 
+    font-size: 13px;
+}
