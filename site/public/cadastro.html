@@ -26,8 +26,8 @@
       <div class="container">
         <img src="../assets/img/logo.png" alt="" class="logo">
         <div class="nav">
-          <span class="home">Home</span>
-          <button><a href="Login.html">Login</a></button>
+          <span class="home"><a href="index.html">Home</a></span>
+          <a href="Login.html"><button>Login</button></a>
         </div>
       </div>
     </div>
@@ -82,104 +82,142 @@
     </div>
   </div>
   <!--footer fim-->
+
+
+  <div id="modalCadastro" class="modal-cadastro" >
+    <div class="modal-fundo">
+      <div class="modal-informacao">
+        <img src="assets/img/icon-certo.png" alt="" class="icon-certo">
+        <span class="span-modalCadastro" >Cadastro efetuado com sucesso!</span>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    function abrirModalCadastro() {
+      modalCadastro.style.display = 'flex';
+    }
+
+    function fecharModal() {
+      modalCadastro.style.display = 'none';
+    }
+
+    function cadastrar() {
+      //Recupere o valor da nova input pelo nome do id
+      // Agora vá para o método fetch logo abaixo
+      var nome = input_nome.value;
+      var email = input_email.value;
+      var dataNasc = input_nasc.value;
+      var senha = input_senha.value;
+      var confirmaSenha = input_confSenha.value;
+
+      nome.replaceAll(" ", "");
+      var txtObrigatorio = '*Obrigatório';
+      var validaEmail = /^[A-Za-z0-9.-]{3,}@[A-Za-z0-9]+\.[A-Za-z]{2,}$/;
+      var validaSenha = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[.@$!*?&])[A-Za-z0-9@$!*?&.-]{8,}$/;
+
+      p_erroNome.innerHTML = '';
+      p_erroEmail.innerHTML = '';
+      p_erroData.innerHTML = '';
+      p_erroSenha.innerHTML = '';
+      p_erroConfSenha.innerHTML = '';
+
+
+      if (nome == "") {
+        p_erroNome.innerHTML = txtObrigatorio;
+      }
+
+      if (email == "") {
+        p_erroEmail.innerHTML = txtObrigatorio;
+      } else if (!validaEmail.test(email)) {
+        p_erroEmail.innerHTML = '*Email inválido';
+      }
+
+      if (dataNasc == "") {
+        p_erroData.innerHTML = txtObrigatorio;
+      }
+
+      if (senha == "") {
+        p_erroSenha.innerHTML = txtObrigatorio;
+
+      } else if (!validaSenha.test(senha)) {
+        p_erroSenha.innerHTML = '*Deve conter pelo menos 1 letra maiúscula, 1 letra minúscula, 1 caractere especial, 1 número e ter no mínimo 8 caracteres.';
+        p_erroSenha.style.fontSize = "11px";
+      }
+
+      if (confirmaSenha == "") {
+        p_erroConfSenha.innerHTML = txtObrigatorio;
+
+      } else if (senha != confirmaSenha) {
+        p_erroConfSenha.innerHTML = '*As senhas não correpondem';
+      }
+
+      if (p_erroNome.innerHTML != '' || p_erroEmail.innerHTML != '' || p_erroData.innerHTML != '' || p_erroSenha.innerHTML != '' || p_erroConfSenha.innerHTML != '') {
+        botao.style.marginTop = "8px";
+        return false;
+      } else {
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            nomeServer: nome,
+            emailServer: email,
+            dataNascServer: dataNasc,
+            senhaServer: senha
+          }),
+        })
+          .then(function (resposta) {
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+              abrirModalCadastro();
+
+              setTimeout(() => {
+                    fecharModal();
+                    window.location = "login.html";
+                }, "1000");
+
+              limparFormulario();
+              finalizarAguardar();
+            } else {
+              throw "Houve um erro ao tentar realizar o cadastro!";
+            }
+          })
+          .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+          });
+
+        return false;
+      }
+    }
+
+    function finalizarAguardar(texto) {
+      var divAguardar = document.getElementById("div_aguardar");
+
+      if (divAguardar) {
+        divAguardar.style.display = "none";
+      }
+
+      var divErrosLogin = document.getElementById("div_erros_login");
+
+      if (divErrosLogin) {
+        if (texto) {
+          divErrosLogin.style.display = "flex";
+          divErrosLogin.innerHTML = texto;
+        }
+      }
+    }
+  </script>
+
 </body>
 
 </html>
-
-<script>
-  function cadastrar() {
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
-    var nome = input_nome.value;
-    var email = input_email.value;
-    var dataNasc = input_nasc.value;
-    var senha = input_senha.value;
-    var confirmaSenha = input_confSenha.value;
-
-    nome.replaceAll(" ","");
-    var txtObrigatorio = '*Obrigatório';
-    var validaEmail = /^[A-Za-z0-9.-]{3,}@[A-Za-z0-9]+\.[A-Za-z]{2,}$/;
-    var validaSenha = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[.@$!*?&])[A-Za-z0-9@$!*?&.-]{8,}$/;
-
-    p_erroNome.innerHTML = '';
-    p_erroEmail.innerHTML = '';
-    p_erroData.innerHTML = '';
-    p_erroSenha.innerHTML = '';
-    p_erroConfSenha.innerHTML = '';
-   
-
-    if (nome == "") {
-      p_erroNome.innerHTML = txtObrigatorio;  
-    }
-
-    if (email == "") {
-      p_erroEmail.innerHTML = txtObrigatorio;
-    } else if (!validaEmail.test(email)) {
-      p_erroEmail.innerHTML = '*Email inválido';
-    }
-
-    if (dataNasc == "") {
-      p_erroData.innerHTML = txtObrigatorio; 
-    }
-
-    if (senha == "") {
-      p_erroSenha.innerHTML = txtObrigatorio;
-     
-    } else if (!validaSenha.test(senha)) {
-      p_erroSenha.innerHTML = '*Deve conter pelo menos 1 letra maiúscula, 1 letra minúscula, 1 caractere especial, 1 número e ter no mínimo 8 caracteres.';
-      p_erroSenha.style.fontSize = "11px";
-    }
-
-    if (confirmaSenha == "") {
-      p_erroConfSenha.innerHTML = txtObrigatorio;
-  
-    } else if (senha != confirmaSenha) {
-      p_erroConfSenha.innerHTML = '*As senhas não correpondem';
-    }
-
-    if ( p_erroNome.innerHTML != '' || p_erroEmail.innerHTML != '' || p_erroData.innerHTML != '' || p_erroSenha.innerHTML != '' || p_erroConfSenha.innerHTML != ''){
-      botao.style.marginTop = "8px";
-      return false;
-    }else{
-
-    // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        nomeServer: nome,
-        emailServer: email,
-        dataNascServer: dataNasc,
-        senhaServer: senha
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
-          alert(
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...");
-
-          setTimeout(() => {
-            window.location = "login.html";
-          }, "2000");
-
-          limparFormulario();
-          finalizarAguardar();
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
-      });
-
-    return false;
-  }
-}
-</script>
