@@ -90,19 +90,31 @@
     </div>
     <!--footer fim-->
 
+
+
+
+        <div id="modalLogin" class="modal-login">
+        <div class="modal-fundo">
+            <div class="modal-informacao">
+                <img src="assets/img/icon-certo.png" alt="" class="icon-certo">
+                <span class="span-modalLogin">Login efetuado com sucesso!</span>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>
 
 <script>
 
-    function abrirModalFotoPerfil() {
-        myModal.style.display = 'flex';
-        span_modalErro.innerHTML = 'Cadastro não existe';
+
+    function abrirModalLogin() {
+        modalLogin.style.display = 'flex';
     }
 
     function fecharModal() {
-        myModal.style.display = 'none';
+        modalLogin.style.display = 'none';
     }
 
 
@@ -113,7 +125,7 @@
 
         if (email == "") {
             p_erroEmail.innerHTML = "*Obrigatório";
-        } 
+        }
         if (senha == "") {
             p_erroSenha.innerHTML = "*Obrigatório"
         }
@@ -143,7 +155,7 @@
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.idUsuario;
 
-                    alert("Login bem-sucedido! Redirecionando para a tela de dashboard...");
+                    abrirModalLogin();
                     setTimeout(function () {
                         window.location = "./dashboard/cards.html";
                     }, 1000); // apenas para exibir o loading
