@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/tela-jogoStyle.css">
 </head>
 
-<body">
+<body>
 
 
     <div class="header" style="border-radius: 0px 0px 40px 0px;">
@@ -78,7 +78,7 @@
     </div>
 
 
-    </body>
+</body>
 
 </html>
 
@@ -87,7 +87,7 @@
     var perguntaAtual = 0;
     var respostaJogo = '';
     var btnComecar = 1;
-    var posicao=0;
+    var posicao = 0;
 
     var mpb = Number(0);
     var rap = Number(0);
@@ -103,7 +103,7 @@
     var pontuacaoTotal = 0;
 
 
-    var listaMusica = ['assets/musica/Man in the Mirror.mp3', 'assets/musica/Cigana.mp3', 'assets/musica/destinys-child-dangerously-in-love.mp3', 'assets/musica/justin-bieber-one-time.mp3', 'assets/musica/water-tyle.mp3', 'assets/musica/Cigana.mp3', 'assets/musica/destinys-child-dangerously-in-love.mp3',  'assets/musica/water-tyle.mp3'];
+    var listaMusica = ['assets/musica/Man in the Mirror.mp3', 'assets/musica/Cigana.mp3', 'assets/musica/destinys-child-dangerously-in-love.mp3', 'assets/musica/justin-bieber-one-time.mp3', 'assets/musica/water-tyle.mp3', 'assets/musica/Cigana.mp3', 'assets/musica/destinys-child-dangerously-in-love.mp3', 'assets/musica/water-tyle.mp3'];
     var listaRespostas1 = ['Conquista', 'ela dança eu danço', 'Rubi', 'Troca de calçada', 'mania', 'Da ponte pra cá', 'mainha', 'o amor vai vencer'];
     var listaRespostas2 = ['Nosso sonho', 'juntos pela eternidade', 'Não desliga o telefone', 'Estranho', 'linda de mais', 'Vida Loka II', 'viva a vida', 'juntos'];
     var listaRespostas3 = ['Quero te encontrar', 'mulher de lei', 'Oh meu amor', 'Ausência', 'sempre assim', 'A vida é desafio', 'sinta o amor', 'sei q me ama'];
@@ -267,9 +267,9 @@
                             temaPartidaServer: 'nacional',
                             fkPontoServer: sessionStorage.ID_PONTO,
                             fkUsuarioServer: sessionStorage.ID_USUARIO
-                            
 
-                            
+
+
                         }),
                     });
                 })
@@ -277,9 +277,11 @@
                     console.log("resposta: ", resposta);
                     if (resposta.ok) {
 
-                        alert(
-                            "Pontuação realizado com sucesso! Redirecionando para tela de Login...");
+                        alert("Pontuação realizado com sucesso! Redirecionando para tela de Login...");
                         limparFormulario();
+                        setTimeout(() => {
+                            window.location = "tela-ponto.html";
+                        }, "1000");
                     } else {
                         throw "Houve um erro ao tentar realizar o cadastro!";
                     }
@@ -291,6 +293,7 @@
 
             return false;
         }
+
     }
 
 
@@ -350,7 +353,7 @@
 
     function somaPontos() {
         var pontos = 0;
-        while( posicao < listaRespostasCerta.length) {
+        while (posicao < listaRespostasCerta.length) {
             if (respostaJogo == listaRespostasCerta[posicao]) {
                 if (segundo <= 2) {
                     pontos = 100;
@@ -376,41 +379,41 @@
             posicao += 1
             break;
         }
-        
+
     }
 
     function pontuacaoPorGenero(pontos) {
 
-    for (var genero in listaRespostasCertaGenero) {
-        console.log(genero);
-        for (var posicaoGenero = 0; posicaoGenero < listaRespostasCertaGenero[genero].length; posicaoGenero+=1) {
-            console.log(posicaoGenero);
-            if (respostaJogo == listaRespostasCertaGenero[genero][posicaoGenero]) {
-                if (genero == 'pop') {
-                    pop += pontos;
-                } else if (genero == 'mpb') {
-                    mpb += pontos;
-                } else if (genero == 'rap') {
-                    rap += pontos;
-                } else if (genero == 'funk') {
-                    funk += pontos;
-                } else if (genero == 'rock') {
-                    rock += pontos;
-                } else if (genero == 'forro') {
-                    forro += pontos;
-                } else if (genero == 'pagode') {
-                    pagode += pontos;
-                } else if (genero == 'sertanejo') {
-                    sertanejo += pontos;
-                }
+        for (var genero in listaRespostasCertaGenero) {
+            console.log(genero);
+            for (var posicaoGenero = 0; posicaoGenero < listaRespostasCertaGenero[genero].length; posicaoGenero += 1) {
+                console.log(posicaoGenero);
+                if (respostaJogo == listaRespostasCertaGenero[genero][posicaoGenero]) {
+                    if (genero == 'pop') {
+                        pop += pontos;
+                    } else if (genero == 'mpb') {
+                        mpb += pontos;
+                    } else if (genero == 'rap') {
+                        rap += pontos;
+                    } else if (genero == 'funk') {
+                        funk += pontos;
+                    } else if (genero == 'rock') {
+                        rock += pontos;
+                    } else if (genero == 'forro') {
+                        forro += pontos;
+                    } else if (genero == 'pagode') {
+                        pagode += pontos;
+                    } else if (genero == 'sertanejo') {
+                        sertanejo += pontos;
+                    }
 
-                pontuacaoTotal = mpb + rap + pop + funk + rock + forro + pagode + sertanejo;
-                document.getElementById('pontuacaoTotal').textContent = pontuacaoTotal;
-                break;
+                    pontuacaoTotal = mpb + rap + pop + funk + rock + forro + pagode + sertanejo;
+                    document.getElementById('pontuacaoTotal').textContent = pontuacaoTotal;
+                    break;
+                }
             }
         }
     }
-}
 
     function voltar() {
         window.location = "tela-tema.html";
