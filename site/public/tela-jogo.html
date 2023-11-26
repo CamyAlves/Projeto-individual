@@ -210,7 +210,6 @@
             audio.play();
             atualizarRelogio();
         } else {
-            console.log("sessionStorage.ID_USUARIO:", sessionStorage.ID_USUARIO);
             fetch("/usuarios/pontuacao", {
                 method: "POST",
                 headers: {
@@ -246,7 +245,7 @@
                     console.log("sessionStorage.ID_USUARIO (antes de /usuarios/partida):", sessionStorage.ID_USUARIO);
                     // Define sessionStorage.ID_PONTO
                     sessionStorage.ID_PONTO = json.idPonto;
-                    sessionStorage.PONTO_TOTAL = json.pontuacaoTotal;
+                    sessionStorage.PONTO_TOTAL = pontuacaoTotal;
                     console.log("pontuaçao total:", sessionStorage.PONTO_TOTAL);
 
                     return fetch("/usuarios/partida", {

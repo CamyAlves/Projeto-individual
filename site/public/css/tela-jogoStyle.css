@@ -18,14 +18,14 @@ body{
     display: flex;
     justify-content: center;
     color: white;
-    font-size: 15px;
+    font-size: 25px;
 }
 
 .temporizador{
     display: flex;
     justify-content: center;
     color: white;
-    font-size: 15px;
+    font-size: 17px;
 }
 
 
@@ -50,7 +50,7 @@ body{
     border-radius:10px; 
     width: 290px;
     height: 66px;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .btn-voltar{
@@ -63,7 +63,7 @@ body{
     border-radius:7px;
     color: white;
     margin-right: 90px;
-    font-size: 13px;
+    font-size: 15px;
     cursor: pointer;
 }
 
@@ -90,7 +90,7 @@ a{
     color: white;
     margin-left: 90px;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 
