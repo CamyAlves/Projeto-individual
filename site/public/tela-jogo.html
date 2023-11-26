@@ -29,8 +29,6 @@
         <source id="source_musica" type="audio/mpeg">
     </audio>
 
-    <video id="gifComecar" class="gif-Comecar"></video>
-
 
     <div class="perguntas">
         <div class="fundo-claro">
@@ -72,9 +70,12 @@
                 <div class="btn-comecar" onclick="comecarJogo()">Começar Jogo</div>
             </div>
         </div>
-        <div id="resultado" class="pontuacao">Pontos: 0</div>
+        <div id="resultado" class="pontuacao">Pontos: <span id="pontuacaoTotal">0</span></div>
     </div>
 
+    <div class="fundo-video">
+        <video id="gifComecar" class="gif-Comecar"></video>
+    </div>
 
 
     </body>
@@ -86,6 +87,7 @@
     var perguntaAtual = 0;
     var respostaJogo = '';
     var btnComecar = 1;
+    var posicao=0;
 
     var mpb = Number(0);
     var rap = Number(0);
@@ -101,7 +103,7 @@
     var pontuacaoTotal = 0;
 
 
-    var listaMusica = ['assets/musica/Man in the Mirror.mp3', 'assets/musica/Cigana.mp3', 'assets/musica/destinys-child-dangerously-in-love.mp3', 'assets/musica/justin-bieber-one-time.mp3', 'assets/musica/water-tyle.mp3'];
+    var listaMusica = ['assets/musica/Man in the Mirror.mp3', 'assets/musica/Cigana.mp3', 'assets/musica/destinys-child-dangerously-in-love.mp3', 'assets/musica/justin-bieber-one-time.mp3', 'assets/musica/water-tyle.mp3', 'assets/musica/Cigana.mp3', 'assets/musica/destinys-child-dangerously-in-love.mp3',  'assets/musica/water-tyle.mp3'];
     var listaRespostas1 = ['Conquista', 'ela dança eu danço', 'Rubi', 'Troca de calçada', 'mania', 'Da ponte pra cá', 'mainha', 'o amor vai vencer'];
     var listaRespostas2 = ['Nosso sonho', 'juntos pela eternidade', 'Não desliga o telefone', 'Estranho', 'linda de mais', 'Vida Loka II', 'viva a vida', 'juntos'];
     var listaRespostas3 = ['Quero te encontrar', 'mulher de lei', 'Oh meu amor', 'Ausência', 'sempre assim', 'A vida é desafio', 'sinta o amor', 'sei q me ama'];
@@ -115,7 +117,7 @@
 
     function comecarJogo() {
         if (btnComecar == 1) {
-            gifComecar.innerHTML = '<source src="assets/comecar.mp4" type="video/mp4">'
+            gifComecar.innerHTML = '<source class="source-comecar" src="assets/comecar.mp4" type="video/mp4">'
             gifComecar.style.display = 'flex';
             gifComecar.play();
 
@@ -179,15 +181,13 @@
 
     function proximaPergunta() {
 
-
-
         respostaJogo = '';
         resposta1.style.color = 'white';
         resposta2.style.color = 'white';
         resposta3.style.color = 'white';
         resposta4.style.color = 'white';
 
-        if (perguntaAtual < 8) {
+        if (perguntaAtual < 7) {
             perguntaAtual += 1;
 
             audio.src = `${listaMusica[perguntaAtual]}`;
@@ -227,9 +227,9 @@
                     forroServer: forro,
                     pagodeServer: pagode,
                     sertanejoServer: sertanejo,
-                    rEbServer: forro,
-                    hiphopServer: pagode,
-                    kpopServer: sertanejo,
+                    rEbServer: 0,
+                    hiphopServer: 0,
+                    kpopServer: 0,
                     pontuacaoTotalServer: pontuacaoTotal
                 }),
             })
@@ -246,6 +246,9 @@
                     console.log("sessionStorage.ID_USUARIO (antes de /usuarios/partida):", sessionStorage.ID_USUARIO);
                     // Define sessionStorage.ID_PONTO
                     sessionStorage.ID_PONTO = json.idPonto;
+                    sessionStorage.PONTO_TOTAL = json.pontuacaoTotal;
+                    console.log("pontuaçao total:", sessionStorage.PONTO_TOTAL);
+
                     return fetch("/usuarios/partida", {
                         method: "POST",
                         headers: {
@@ -257,6 +260,7 @@
                             temaPartidaServer: 'nacional',
                             fkPontoServer: sessionStorage.ID_PONTO,
                             fkUsuarioServer: sessionStorage.ID_USUARIO
+                            
 
                             
                         }),
@@ -338,55 +342,66 @@
 
 
     function somaPontos() {
-
         var pontos = 0;
-
-        for (var posicao = 0; posicao < listaRespostasCerta.length; posicao += 1) {
+        while( posicao < listaRespostasCerta.length) {
             if (respostaJogo == listaRespostasCerta[posicao]) {
                 if (segundo <= 2) {
-                    pontuacaoPorGenero(pontos = 100);
-                    break;
+                    pontos = 100;
                 } else if (segundo <= 5) {
-                    pontuacaoPorGenero(pontos = 90);
-                    break;
+                    pontos = 90;
                 } else if (segundo <= 10) {
-                    pontuacaoPorGenero(pontos = 85);
-                    break;
+                    pontos = 85;
                 } else if (segundo <= 13) {
-                    pontuacaoPorGenero(pontos = 80);
-                    break;
+                    pontos = 80;
                 } else if (segundo <= 18) {
-                    pontuacaoPorGenero(pontos = 75);
-                    break;
+                    pontos = 75;
                 } else if (segundo <= 25) {
-                    pontuacaoPorGenero(pontos = 60);
-                    break;
+                    pontos = 60;
                 } else if (segundo <= 30) {
-                    pontuacaoPorGenero(pontos = 40);
-                    break;
+                    pontos = 40;
                 }
+
+                pontuacaoPorGenero(pontos);
+                console.log(pontos);
             } else {
                 respostaErrada();
-                break;
             }
+            posicao += 1
+            break;
         }
     }
 
     function pontuacaoPorGenero(pontos) {
 
-        for (var posicaoGenero = 0; posicaoGenero < listaRespostasCertaGenero['pop'].length; posicaoGenero += 1) {
-            if (listaRespostasCertaGenero['pop'][posicaoGenero]) {
-                pop += pontos;
-                resultado.innerHTML = `pontos: ${pop}`;
-                break;
-            } else if (listaRespostasCertaGenero['mpb'][posicaoGenero]) {
-                mpb += pontos;
-                resultado.innerHTML = `pontos: ${pop}`;
+
+    for (var genero in listaRespostasCertaGenero) {
+        for (var posicaoGenero = 0; posicaoGenero < listaRespostasCertaGenero[genero].length; posicaoGenero+=1) {
+            if (respostaJogo == listaRespostasCertaGenero[genero][posicaoGenero]) {
+                if (genero == 'pop') {
+                    pop += pontos;
+                } else if (genero == 'mpb') {
+                    mpb += pontos;
+                } else if (genero == 'rap') {
+                    rap += pontos;
+                } else if (genero == 'funk') {
+                    funk += pontos;
+                } else if (genero == 'rock') {
+                    rock += pontos;
+                } else if (genero == 'forro') {
+                    forro += pontos;
+                } else if (genero == 'pagode') {
+                    pagode += pontos;
+                } else if (genero == 'sertanejo') {
+                    sertanejo += pontos;
+                }
+
+                pontuacaoTotal = mpb + rap + pop + funk + rock + forro + pagode + sertanejo;
+                document.getElementById('pontuacaoTotal').textContent = pontuacaoTotal;
                 break;
             }
         }
-        pontuacaoTotal = mpb + rap + pop + funk + rock + forro + pagode + sertanejo;
     }
+}
 
     function voltar() {
         window.location = "tela-tema.html";
