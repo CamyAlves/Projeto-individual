@@ -27,7 +27,6 @@
                 <img src="../assets/img/logo.png" alt="" class="logo">
                 <div class="nav">
                     <span id="b_usuario">usuário</span>
-                    <span id="b_pontuacao">0</span>
                     <div class="foto-perfil" onclick="abrirModalFotoPerfil()"></div>
                 </div>
             </div>
@@ -152,11 +151,17 @@
 
                 <div class="fundo">
                     <div class="graficoBola">
-                        <div class="grafico_b"><canvas id="myChart1"
-                                style="position: relative; height: 350px; width: 350px;"></canvas></div>
-                        <div class="grafico_b"><canvas id="myChart2"
-                                style="position: relative; height: 350px; width: 350px;"></canvas></div>
+                        <span id="b_pontuacao" style="margin: 5px;">0</span><br>
+                        <span id="b_mpb" style="margin: 5px;">0</span><br>
+                        <span id="b_rap" style="margin: 5px;">0</span><br>
+                        <span id="b_pop" style="margin: 5px;">0</span><br>
+                        <span id="b_funk" style="margin: 6px;">0</span><br>
+                        <span id="b_rock" style="margin: 5px;">0</span><br>
+                        <span id="b_forro" style="margin: 5px;">0</span><br>
+                        <span id="b_pagode" style="margin: 5px;">0</span><br>
+                        <span id="b_sertanejo" style="margin: 5px;">0</span><br>
                     </div>
+
                     <div class="graficoBarra">
                         <div><canvas id="myChart" style="position: relative; height: 25vh; width: 30vw;"></canvas></div>
                     </div>
@@ -166,7 +171,6 @@
 </body>
 
 <script>
-
 
     function abrirModalFotoPerfil() {
         myModal.style.display = 'flex';

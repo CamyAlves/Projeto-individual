@@ -110,7 +110,7 @@
     var listaRespostas4 = ['Chance', 'sintonia do amor', 'Me libera', 'Deprê', 'ainda te amo', 'Vida Loka', 'noitecer', 'ainda vou exisir'];
 
     var listaRespostasCerta = ['Nosso sonho', 'juntos pela eternidade', 'Não desliga o telefone', 'Ausência', 'ainda te amo', 'Da ponte pra cá', 'noitecer', 'sei q me ama'];
-    var listaRespostasCertaGenero = { 'pop': ['Nosso sonho'], 'mpb': ['juntos pela eternidade'], 'rock': ['Não desliga o telefone'], 'rap': ['Ausência'], 'funk': ['ainda te amo'], 'forro': ['Da ponte pra cá'], 'pagode': ['noitecer'], 'sertanejo': ['sei q me ama '] };
+    var listaRespostasCertaGenero = { 'pop': ['Nosso sonho'], 'mpb': ['juntos pela eternidade'], 'rock': ['Não desliga o telefone'], 'rap': ['Ausência'], 'funk': ['ainda te amo'], 'forro': ['Da ponte pra cá'], 'pagode': ['noitecer'], 'sertanejo': ['sei q me ama'] };
 
     var audio = document.getElementById("musica");
 
@@ -187,7 +187,7 @@
         resposta3.style.color = 'white';
         resposta4.style.color = 'white';
 
-        if (perguntaAtual < 7) {
+        if (perguntaAtual < 8) {
             perguntaAtual += 1;
 
             audio.src = `${listaMusica[perguntaAtual]}`;
@@ -246,6 +246,14 @@
                     // Define sessionStorage.ID_PONTO
                     sessionStorage.ID_PONTO = json.idPonto;
                     sessionStorage.PONTO_TOTAL = pontuacaoTotal;
+                    sessionStorage.PONTO_MPB = mpb;
+                    sessionStorage.PONTO_RAP = rap;
+                    sessionStorage.PONTO_POP = pop;
+                    sessionStorage.PONTO_FUNK = funk;
+                    sessionStorage.PONTO_ROCK = rock;
+                    sessionStorage.PONTO_FORRO = forro;
+                    sessionStorage.PONTO_PAGODE = pagode;
+                    sessionStorage.PONTO_SERTANEJO = sertanejo;
                     console.log("pontuaçao total:", sessionStorage.PONTO_TOTAL);
 
                     return fetch("/usuarios/partida", {
@@ -368,13 +376,15 @@
             posicao += 1
             break;
         }
+        
     }
 
     function pontuacaoPorGenero(pontos) {
 
-
     for (var genero in listaRespostasCertaGenero) {
+        console.log(genero);
         for (var posicaoGenero = 0; posicaoGenero < listaRespostasCertaGenero[genero].length; posicaoGenero+=1) {
+            console.log(posicaoGenero);
             if (respostaJogo == listaRespostasCertaGenero[genero][posicaoGenero]) {
                 if (genero == 'pop') {
                     pop += pontos;
