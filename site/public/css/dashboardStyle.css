@@ -1,10 +1,14 @@
 body{
-    background-color: #0B0B0B;
+    background-color: #ffd1e3;
     color: white;
 }
 
+.header{
+    background-color: #0B0B0B;
+}
+
 .lateral{
-    background-color: #1B1B1B; 
+    background-color: #0B0B0B; 
     width: 140px; 
     display: flex; 
     align-items: center; 
@@ -18,7 +22,7 @@ body{
 }
 
 .dashboard .container .fundo-branco{
-    background-color:#c0c0c0; 
+    background-color:#f8f8f8; 
     display: flex; 
     align-items: center; 
     margin-top: 20px;
@@ -33,7 +37,7 @@ body{
 }
 
 .fundo-branco .box-cinza .fundo-cinza{
-    background-color:#2E2E2E; 
+    background-color:#131313; 
     display: flex; 
     justify-content: center; 
     width: 100%; 
@@ -137,7 +141,7 @@ body{
 }
 
 .fundo .graficoBola{
-    background-color: #c0c0c0; 
+    background-color: #f8f8f8; 
     width: 50%; 
     margin: 20px; 
     border-radius: 20px;
@@ -150,7 +154,7 @@ body{
 }
 
 .fundo .graficoBarra{
-    background-color: #c0c0c0; 
+    background-color: #f8f8f8; 
     width: 50%; 
     margin: 20px; 
     border-radius: 20px;

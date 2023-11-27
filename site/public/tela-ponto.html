@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,18 +9,90 @@
     <link rel="stylesheet" href="css/GlobalStyle.css">
     <link rel="stylesheet" href="css/tela-pontoStyle.css">
 </head>
-<body style="background-image: url(assets/img/fundo-ponto.gif);">
-    <div class="header" style="border-radius: 0px 0px 40px 0px;">
-        <div class="nav-bar">
-            <div class="container">
-                <img src="../assets/img/logo.png" alt="" class="logo">
-                <div class="nav">
-                    <span>usuário</span>
-                    <div class="foto-perfil"></div>
+
+<body>
+    <div class="fundo-acerto">
+        <span class="span-acerto"><span id="b_respostaCerta">0</span>/25</span>
+    </div>
+
+    <div class="fundo">
+        <div class="img-fundo">
+            <div class="fundo-conteudo">
+                <span class="titulo">Pontuação</span>
+
+                <div class="box-pontuacao">
+
+                    <div class="box-conteudo">
+                        <div class="box-tema">
+                            <span class="txt-tema">MPB</span>
+                            <span class="txt-tema">Forro</span>
+                            <span class="txt-tema">Pagode</span>
+                            <span class="txt-tema">Sertanejo</span>
+                        </div>
+                        <div class="box-ponto">
+                            <span class="txt-ponto" id="b_mpb">0</span>
+                            <span class="txt-ponto" id="b_forro">0</span>
+                            <span class="txt-ponto" id="b_pagode">0</span>
+                            <span class="txt-ponto" id="b_sertanejo">0</span>
+                        </div>
+                    </div>
+
+                    <div class="box-conteudo">
+                        <div class="box-tema">
+                            <span class="txt-tema">Rap</span>
+                            <span class="txt-tema">POP</span>
+                            <span class="txt-tema">Funk</span>
+                            <span class="txt-tema">Rock</span>
+                        </div>
+                        <div class="box-ponto">
+                            <span class="txt-ponto" id="b_rap">0</span>
+                            <span class="txt-ponto" id="b_pop">0</span>
+                            <span class="txt-ponto" id="b_funk">0</span>
+                            <span class="txt-ponto" id="b_rock">0</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="pontoTotal">
+                    <div class="txt-pontoTotal">Total:</div>
+                    <div id="b_pontuacao" class="total">0</div>
                 </div>
             </div>
         </div>
     </div>
 
+        <div class="fundo-btn">
+            <div class="div_alt"></div>
+            <a href="dashboard/cards.html"><div class="btn">Voltar</div></a>
+            <a href=""><div class="btn">Ranked</div></a>
+            <div class="div_alt"></div>
+        </div>
+
+
 </body>
+
 </html>
+<script>
+    b_pontuacao.innerHTML = sessionStorage.PONTO_TOTAL;
+    b_mpb.innerHTML = sessionStorage.PONTO_MPB;
+    b_rap.innerHTML = sessionStorage.PONTO_RAP;
+    b_pop.innerHTML = sessionStorage.PONTO_POP;
+    b_funk.innerHTML = sessionStorage.PONTO_FUNK;
+    b_rock.innerHTML = sessionStorage.PONTO_ROCK;
+    b_forro.innerHTML = sessionStorage.PONTO_FORRO;
+    b_pagode.innerHTML = sessionStorage.PONTO_PAGODE;
+    b_sertanejo.innerHTML = sessionStorage.PONTO_SERTANEJO;
+    b_respostaCerta.innerHTML = sessionStorage.PONTO_RESPOSTA_CERTA;
+
+
+    console.log("total: ", sessionStorage.PONTO_TOTAL);
+    console.log("mpb: ", sessionStorage.PONTO_MPB);
+    console.log("rap: ", sessionStorage.PONTO_RAP);
+    console.log("pop: ", sessionStorage.PONTO_POP);
+    console.log("funk: ", sessionStorage.PONTO_FUNK);
+    console.log("rock: ", sessionStorage.PONTO_ROCK);
+    console.log("forro: ", sessionStorage.PONTO_FORRO);
+    console.log("pagode: ", sessionStorage.PONTO_PAGODE);
+    console.log("SERTANEJO: ", sessionStorage.PONTO_SERTANEJO);
+</script>

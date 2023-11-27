@@ -11,6 +11,7 @@ function validarSessao() {
     var forro = sessionStorage.PONTO_FORRO;
     var pagode = sessionStorage.PONTO_PAGODE;
     var sertanejo = sessionStorage.PONTO_SERTANEJO;
+    var respostaCerta = sessionStorage.PONTO_RESPOSTA_CERTA;
 
 
     var b_usuario = document.getElementById("b_usuario");
@@ -23,10 +24,10 @@ function validarSessao() {
     var b_forro = document.getElementById("b_forro");
     var b_pagode = document.getElementById("b_pagode");
     var b_sertanejo = document.getElementById("b_sertanejo");
+    var b_respostaCerta = document.getElementById("b_respostaCerta");
 
     if (email != null && nome != null) {
         b_usuario.innerHTML = nome;
-        
         b_pontuacao.innerHTML = pontoTotal;
         b_mpb.innerHTML = mpb;
         b_rap.innerHTML = rap;
@@ -36,6 +37,7 @@ function validarSessao() {
         b_forro.innerHTML = forro;
         b_pagode.innerHTML = pagode;
         b_sertanejo.innerHTML = sertanejo;
+        b_respostaCerta.innerHTML = respostaCerta;
     } else {
         window.location = "../login.html";
     }

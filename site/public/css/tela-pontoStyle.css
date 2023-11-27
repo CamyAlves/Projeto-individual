@@ -1,0 +1,125 @@
+*{
+    color: black;
+}
+
+body{
+    background-image: url(../assets/img/fundo-preto-ponto.png);
+}
+
+.fundo-acerto{
+    margin-top: 20px;
+}
+
+.span-acerto{
+    font-size: 37px; margin-left: 40px;
+}
+
+.fundo{
+    width: 100%; 
+    height: 500px; 
+    display: flex; 
+    justify-content: end; 
+}
+
+.img-fundo{
+    width: 80%; 
+    height: 100%;
+}
+
+.fundo-conteudo{
+    width: 100%; 
+    height: 100%; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+}
+
+.titulo{
+    font-size: 57px; 
+    margin-top: 75px;
+}
+
+.box-pontuacao{
+    display: flex; 
+    justify-content: space-between; 
+    width: 40%;
+}
+
+.box-conteudo{
+    display: flex; 
+    justify-content: space-evenly; 
+    margin-top: 10px;
+}
+
+.box-tema{
+    width: 80%; 
+    display: flex; 
+    flex-direction: column;
+}
+
+.txt-tema{
+    font-size: 25px; 
+    margin-top: 10px;
+}
+
+.box-ponto{
+    width: 80%; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: end; 
+    margin-left: 30px;
+}
+
+.txt-ponto{
+    font-size: 25px; 
+    margin: 5px;
+}
+
+.pontoTotal{
+    display: flex; 
+    justify-content: center; 
+    margin-top: 20px;
+    background-image: url(../assets/img/fundo-ponto-total.png);
+    width: 42%;
+    height: 110px;
+}
+
+.txt-pontoTotal{
+    color: white;
+    margin-top: 27px;
+    font-size: 25px;
+}
+
+.total{
+    color: white;
+    margin-top: 27px;
+    font-size: 25px; 
+    margin-left: 10px;
+}
+
+.fundo-btn{
+    margin-top: 40px;
+    display: flex; 
+    justify-content: space-evenly;
+}
+
+.btn{
+    background-color: #dd3a88; 
+    width: 130px; 
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.div_alt{
+    width: 2%;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}

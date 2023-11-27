@@ -70,7 +70,6 @@
                 <div class="btn-comecar" onclick="comecarJogo()">Começar Jogo</div>
             </div>
         </div>
-        <div id="resultado" class="pontuacao">Pontos: <span id="pontuacaoTotal">0</span></div>
     </div>
 
     <div class="fundo-video">
@@ -88,6 +87,7 @@
     var respostaJogo = '';
     var btnComecar = 1;
     var posicao = 0;
+    var respostaCerta = 0;
 
     var mpb = Number(0);
     var rap = Number(0);
@@ -187,7 +187,7 @@
         resposta3.style.color = 'white';
         resposta4.style.color = 'white';
 
-        if (perguntaAtual < 8) {
+        if (perguntaAtual < 7) {
             perguntaAtual += 1;
 
             audio.src = `${listaMusica[perguntaAtual]}`;
@@ -254,6 +254,7 @@
                     sessionStorage.PONTO_FORRO = forro;
                     sessionStorage.PONTO_PAGODE = pagode;
                     sessionStorage.PONTO_SERTANEJO = sertanejo;
+                    sessionStorage.PONTO_RESPOSTA_CERTA = respostaCerta;
                     console.log("pontuaçao total:", sessionStorage.PONTO_TOTAL);
 
                     return fetch("/usuarios/partida", {
@@ -279,9 +280,6 @@
 
                         alert("Pontuação realizado com sucesso! Redirecionando para tela de Login...");
                         limparFormulario();
-                        setTimeout(() => {
-                            window.location = "tela-ponto.html";
-                        }, "1000");
                     } else {
                         throw "Houve um erro ao tentar realizar o cadastro!";
                     }
@@ -291,9 +289,11 @@
 
                 });
 
-            return false;
+                setTimeout(() => {
+                window.location = "tela-ponto.html";
+            }, "1000");
+                return false;
         }
-
     }
 
 
@@ -355,6 +355,7 @@
         var pontos = 0;
         while (posicao < listaRespostasCerta.length) {
             if (respostaJogo == listaRespostasCerta[posicao]) {
+                respostaCerta +=1;
                 if (segundo <= 2) {
                     pontos = 100;
                 } else if (segundo <= 5) {
@@ -408,7 +409,6 @@
                     }
 
                     pontuacaoTotal = mpb + rap + pop + funk + rock + forro + pagode + sertanejo;
-                    document.getElementById('pontuacaoTotal').textContent = pontuacaoTotal;
                     break;
                 }
             }
