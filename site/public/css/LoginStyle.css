@@ -142,4 +142,15 @@ body{
     font-size: 13px;
 }
 
+.modalErro{
+    display: none; 
+}
 
+
+.cadastre{
+    font-size: 13px;
+}
+
+.music{
+    color: #DD3A88;
+}

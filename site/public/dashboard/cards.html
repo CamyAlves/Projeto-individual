@@ -22,7 +22,7 @@
 
 <body onload="validarSessao()">
 
-    <div class="header" style="border-radius: 0px 0px 40px 0px;">
+    <div class="header">
         <div class="nav-bar">
             <div class="container">
                 <img src="../assets/img/logo.png" alt="" class="logo">
@@ -34,68 +34,12 @@
         </div>
     </div>
 
-    <div id="myModal" class="modal">
-        <!-- Conteúdo do modal -->
-        <div class="modal-content">
-            <span class="close" onclick="fecharModal()">&times;</span>
-            <div class="modal-informacao">
-                <div style="width: 100px; height: 100px; background-color: #D4D4D4; border-radius: 100px; margin-top: 30px;"
-                    id="div_fotoPerfilUsuario"></div>
-            </div>
-            <div class="box-fotoEscolhe">
-                <div class="fundo-fotoEscolhe">
-                    <div class="fileira-fotoEscolhe">
-                        <div class="fotoEscolhe" onclick="trocarFotoPerfil('#BEA0F0', 'roxoClaro.png')"><img
-                                src="../assets/img/fotoPerfil-roxoClaro.png" alt="foto-perfil1" class="imgFotoPerfil">
-                        </div>
-                        <div class="fotoEscolhe" style="background-color: #97C9F8;"
-                            onclick="trocarFotoPerfil('#97C9F8', 'azulClaro.png')"><img
-                                src="../assets/img/fotoPerfil-azulClaro.png" alt="foto-perfil2" class="imgFotoPerfil">
-                        </div>
-                        <div class="fotoEscolhe" style="background-color: #B4F3C6;"
-                            onclick="trocarFotoPerfil('#B4F3C6', 'verdeClaro.png')"><img
-                                src="../assets/img/fotoPerfil-verdeClaro.png" alt="foto-perfil3" class="imgFotoPerfil">
-                        </div>
-                        <div class="fotoEscolhe" style="background-color: #EBF38C;"
-                            onclick="trocarFotoPerfil('#EBF38C', 'amareloClaro.png')"><img
-                                src="../assets/img/fotoPerfil-amareloClaro.png" alt="foto-perfil4"
-                                class="imgFotoPerfil"></div>
-                        <div class="fotoEscolhe" style="background-color: #F37EA1;"
-                            onclick="trocarFotoPerfil('#F37EA1', 'rosaClaro.png')"><img
-                                src="../assets/img/fotoPerfil-rosaClaro.png" alt="foto-perfil5" class="imgFotoPerfil">
-                        </div>
-                    </div>
-                    <div class="fileira-fotoEscolhe">
-                        <div class="fotoEscolhe" style="background-color: #F241A1;"
-                            onclick="trocarFotoPerfil('#F241A1', 'rosaEscuro.png')"><img
-                                src="../assets/img/fotoPerfil-rosaEscuro.png" alt="foto-perfil6" class="imgFotoPerfil">
-                        </div>
-                        <div class="fotoEscolhe" style="background-color: #EDDE5B;"
-                            onclick="trocarFotoPerfil('#EDDE5B', 'amareloEscuro.png')"><img
-                                src="../assets/img/fotoPerfil-amareloEscuro.png" alt="foto-perfil7"
-                                class="imgFotoPerfil"></div>
-                        <div class="fotoEscolhe" style="background-color: #57ED66;"
-                            onclick="trocarFotoPerfil('#57ED66', 'verdeEscuro.png')"><img
-                                src="../assets/img/fotoPerfil-verdeEscuro.png" alt="foto-perfil8" class="imgFotoPerfil">
-                        </div>
-                        <div class="fotoEscolhe" style="background-color: #5185EC;"
-                            onclick="trocarFotoPerfil('#5185EC', 'azulEscuro.png')"><img
-                                src="../assets/img/fotoPerfil-azulEscuro.png" alt="foto-perfil9" class="imgFotoPerfil">
-                        </div>
-                        <div class="fotoEscolhe" style="background-color: #7949E0;"
-                            onclick="trocarFotoPerfil('#7949E0', 'roxoEscuro.png')"><img
-                                src="../assets/img/fotoPerfil-roxoEscuro.png" alt="foto-perfil10" class="imgFotoPerfil">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="dash">
 
         <div class="lateral">
             <div class="navbar-lateral">
+                <span>Nacional</span>
+                <span>Internacional</span>
                 <div class="btn-logout" onclick="limparSessao()">
                     <h3>Sair</h3>
                 </div>
@@ -148,29 +92,13 @@
                     </div>
                 </div>
             </div>
-
-            <div class="container">
-
-                <div class="fundo">
-                    <div class="graficoBola">
-                        <span id="b_pontuacao" style="margin: 5px;">0</span><br>
-                        <span id="b_mpb" style="margin: 5px;">0</span><br>
-                        <span id="b_rap" style="margin: 5px;">0</span><br>
-                        <span id="b_pop" style="margin: 5px;">0</span><br>
-                        <span id="b_funk" style="margin: 6px;">0</span><br>
-                        <span id="b_rock" style="margin: 5px;">0</span><br>
-                        <span id="b_forro" style="margin: 5px;">0</span><br>
-                        <span id="b_pagode" style="margin: 5px;">0</span><br>
-                        <span id="b_sertanejo" style="margin: 5px;">0</span><br>
-                        <div class="grafico_b"><canvas id="myChart1"
-                                style="position: relative; height: 350px; width: 350px;"></canvas></div>
-                    </div>
-
-                    <div class="graficoBarra">
-                        <div><canvas id="myChart" style="position: relative; height: 25vh; width: 30vw;"></canvas></div>
-                    </div>
+            <div class="fundo">
+                <div class="graficoBarra">
+                    <div><canvas id="myChart" style="position: relative; height: 13vh; width: 30vw;"></canvas></div>
                 </div>
             </div>
+        </div>
+    </div>
 
 </body>
 
@@ -197,51 +125,35 @@
     }
 
 
-    const bola = document.getElementById('myChart1');
-
-    new Chart(bola, {
-        type: 'doughnut',
-        data: {
-            labels: [
-                'Nacional',
-                'Internacional'
-            ],
-            datasets: [{
-                label: 'Acertos',
-                data: [40, 60],
-                backgroundColor: [
-                    '#DD3A88',
-                    '#000000'
-                ],
-                hoverOffset: 4
-            }]
-        }
-    });
-
-
     const ctx = document.getElementById('myChart');
 
-new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['MPB', 'POP', 'HIP-HOP-Rap', 'R&B', 'Rock', 'Pagode', 'Setanejo', 'Funk', 'KPop'],
-        datasets: [{
-            label: 'Acertos por tema',
-            data: [sessionStorage.PONTO_MPB, 4, 3, 1, 2, 1, 1, 4, 5],
-            borderWidth: 1,
-            borderColor: '#DD3A88',
-            backgroundColor: '#DD3A88',
-        }]
-    },
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['MPB', 'POP', 'HIP-HOP', 'Rap', 'R&B', 'Rock', 'Pagode', 'Setanejo', 'Funk', 'Forró', 'KPop'],
+            datasets: [{
+                label: 'Quantidade de acertos da última partida',
+                data: [sessionStorage.PONTO_RESPOSTA_CERTA_MPB, sessionStorage.PONTO_RESPOSTA_CERTA_POP, 0, sessionStorage.PONTO_RESPOSTA_CERTA_RAP, 0, sessionStorage.PONTO_RESPOSTA_CERTA_ROCK, sessionStorage.PONTO_RESPOSTA_CERTA_PAGODE, sessionStorage.PONTO_RESPOSTA_CERTA_SERTANEJO, sessionStorage.PONTO_RESPOSTA_CERTA_FUNK, sessionStorage.PONTO_RESPOSTA_CERTA_FORRO, 0],
+                borderWidth: 1,
+                borderColor: '#DD3A88',
+                backgroundColor: '#DD3A88',
+            }, {
+                label: 'Quantidade de perguntas',
+                data: [sessionStorage.PERGUNTAS_MPB, sessionStorage.PERGUNTAS_POP, 0, sessionStorage.PERGUNTAS_RAP, 0, sessionStorage.PERGUNTAS_ROCK, sessionStorage.PERGUNTAS_PAGODE, sessionStorage.PERGUNTAS_SERTANEJO, sessionStorage.PERGUNTAS_FUNK, sessionStorage.PERGUNTAS_FORRO, 0],
+                borderWidth: 1,
+                borderColor: '#000',
+                backgroundColor: '#000',
+            }]
+        },
 
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
             }
         }
-    }
-});
+    });
 </script>
 
 </html>

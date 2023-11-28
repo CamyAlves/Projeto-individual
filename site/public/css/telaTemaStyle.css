@@ -16,14 +16,15 @@ body{
     display: flex;
     justify-content: center;
     background-color: #030303;
-    background-image: url(../img/borda-temas.png);
     border-radius: 20px;
+    border: 1px solid #dd3a88;
     width: 30%;
 }
 
 .texto{
     display: flex;
     flex-direction: column;
+    height: 430px;
 }
 
 .nacional{
@@ -40,13 +41,13 @@ body{
 .opcoes .container .box .sub-titulo{
     display: flex;
     justify-content: center;
-    font-size: 17px;
+    font-size: 20px;
     color: #DD3A88;
 }
 
 .texto .texto_nacional{
-    font-size: 15px;
-    width: 70%;
+    font-size: 17px;
+    width: 69%;
     margin-right: 70px;
     margin-left: 70px;
 }
@@ -62,7 +63,7 @@ body{
 }
 
 .opcoes .container .box .texto .temas .tema{
-    font-size: 15px;
+    font-size: 17px;
 
 }
 

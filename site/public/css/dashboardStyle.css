@@ -9,7 +9,7 @@ body{
 
 .lateral{
     background-color: #0B0B0B; 
-    width: 140px; 
+    width: 10%; 
     display: flex; 
     align-items: center; 
     justify-content: space-between;
@@ -21,8 +21,17 @@ body{
     flex-direction: column;
 }
 
+.dashboard{
+    width: 100%;
+}
+
+.dashboard .container{
+    width: 97%;
+}
+
 .dashboard .container .fundo-branco{
     background-color:#f8f8f8; 
+    width: 100%;
     display: flex; 
     align-items: center; 
     margin-top: 20px;
@@ -38,15 +47,15 @@ body{
 
 .fundo-branco .box-cinza .fundo-cinza{
     background-color:#131313; 
-    display: flex; 
+    display: flex;
     justify-content: center; 
     width: 100%; 
-    margin: 20px; 
+    margin: 27px; 
     border-radius: 20px;
 }
 
 .fundo-cinza .fundo-cinza-elementos{
-    width: 75%; 
+    width: 90%; 
     display: flex; 
     flex-direction: column; 
     align-items: center;
@@ -54,7 +63,7 @@ body{
 }
 
 .fundo-cinza .fundo-cinza-elementos .textoComoJogar{
-    font-size: 14px;
+    font-size: 17px;
 }
 
 .fundo-cinza .fundo-cinza-elementos .span_rosa{
@@ -69,7 +78,7 @@ body{
 }
 
 .jogar .jogar-elementos{
-    width: 80%;
+    width: 70%;
 }
 
 .jogar .jogar-elementos .texto_jogar_logo{
@@ -110,7 +119,7 @@ body{
 
 
 .texto_jogar .span_jogar{
-    font-size: 14px;
+    font-size: 18px;
     color: #0B0B0B;
 }
 
@@ -140,24 +149,18 @@ body{
     border-radius: 20px;
 }
 
-.fundo .graficoBola{
-    background-color: #f8f8f8; 
-    width: 50%; 
-    margin: 20px; 
-    border-radius: 20px;
-    display: flex;
-}
-
-.graficoBola .grafico_b{
-    width:205px; 
-    margin-left: 40px;
-}
 
 .fundo .graficoBarra{
     background-color: #f8f8f8; 
-    width: 50%; 
+    width: 100%; 
     margin: 20px; 
     border-radius: 20px;
+}
+
+#myChart{
+    position: relative;
+    height: 13vh; 
+    width: 30vw;
 }
 
 .hello{
@@ -172,104 +175,7 @@ body{
 
 
 
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.7);
-    justify-content: center;
-    align-items:center ;
-}
 
-/* Estilo para o conteúdo do modal */
-.modal-content {
-    background-color: black;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #DD3A88;
-    width: 50%;
-    border-radius: 10px;
-}
 
-/* Estilo para o botão de fechar o modal */
-.close {
-    color: #DD3A88;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
 
-#gifComecar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    max-width: 70%; /* Ajuste a largura conforme necessário */
-    max-height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 20px;
-    display: none; /* Inicialmente escondido */
-    z-index: 1000; /* Garante que está acima dos outros elementos */
-}
-
-/* Estilo para o modal */
-
-.modal .modal-informacao{
-    display: flex; 
-    align-items: center; 
-    flex-direction: column;
-}
-
-.modal .box-fotoEscolhe{
-    display: flex; 
-    justify-content: center;
-}
-
-.modal .box-fotoEscolhe .fundo-fotoEscolhe{
-    display: flex; 
-    flex-direction: column; 
-    background-color: black; 
-    width: 80%; 
-    height: 240px; 
-    border: 2px solid #DD3A88; 
-    border-radius: 20px; 
-}
-
-.modal .box-fotoEscolhe .fundo-fotoEscolhe .fileira-fotoEscolhe{
-    display: flex; 
-    justify-content: space-evenly;
-}
-
-.modal .box-fotoEscolhe .fundo-fotoEscolhe .fileira-fotoEscolhe .fotoEscolhe{
-    width: 70px; 
-    height: 70px; 
-    background-color: #BEA0F0; 
-    border-radius: 100px;
-}
-
-.modal .box-fotoEscolhe .fundo-fotoEscolhe .fileira-fotoEscolhe .fotoEscolhe .imgFotoPerfil{
-    width: 70px; 
-    height: 70px;
-}
-
-.modalErro{
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.7);
-}

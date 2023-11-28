@@ -12,7 +12,7 @@
 <body>
 
 
-    <div class="header" style="border-radius: 0px 0px 40px 0px;">
+    <div class="header">
         <div class="nav-bar">
             <div class="container">
                 <img src="../assets/img/logo.png" alt="" class="logo">
@@ -88,6 +88,14 @@
     var btnComecar = 1;
     var posicao = 0;
     var respostaCerta = 0;
+    var respostaCertaMPB = 0;
+    var respostaCertaRAP = 0;
+    var respostaCertaPOP = 0;
+    var respostaCertaFUNK = 0;
+    var respostaCertaROCK = 0;
+    var respostaCertaFORRO = 0;
+    var respostaCertaPAGODE = 0;
+    var respostaCertaSERTANEJO = 0;
 
     var mpb = Number(0);
     var rap = Number(0);
@@ -111,7 +119,6 @@
 
     var listaRespostasCerta = ['Nosso sonho', 'juntos pela eternidade', 'Não desliga o telefone', 'Ausência', 'ainda te amo', 'Da ponte pra cá', 'noitecer', 'sei q me ama'];
     var listaRespostasCertaGenero = { 'pop': ['Nosso sonho'], 'mpb': ['juntos pela eternidade'], 'rock': ['Não desliga o telefone'], 'rap': ['Ausência'], 'funk': ['ainda te amo'], 'forro': ['Da ponte pra cá'], 'pagode': ['noitecer'], 'sertanejo': ['sei q me ama'] };
-
     var audio = document.getElementById("musica");
 
 
@@ -255,6 +262,24 @@
                     sessionStorage.PONTO_PAGODE = pagode;
                     sessionStorage.PONTO_SERTANEJO = sertanejo;
                     sessionStorage.PONTO_RESPOSTA_CERTA = respostaCerta;
+                    sessionStorage.PONTO_RESPOSTA_CERTA_MPB = respostaCertaMPB;
+                    sessionStorage.PONTO_RESPOSTA_CERTA_POP = respostaCertaPOP;
+                    sessionStorage.PONTO_RESPOSTA_CERTA_RAP = respostaCertaRAP;
+                    sessionStorage.PONTO_RESPOSTA_CERTA_FUNK = respostaCertaFUNK;
+                    sessionStorage.PONTO_RESPOSTA_CERTA_ROCK = respostaCertaROCK;
+                    sessionStorage.PONTO_RESPOSTA_CERTA_FORRO = respostaCertaFORRO;
+                    sessionStorage.PONTO_RESPOSTA_CERTA_PAGODE = respostaCertaPAGODE;
+                    sessionStorage.PONTO_RESPOSTA_CERTA_SERTANEJO = respostaCertaSERTANEJO;
+                    sessionStorage.PERGUNTAS_MPB = listaRespostasCertaGenero['mpb'].length;
+                    sessionStorage.PERGUNTAS_POP = listaRespostasCertaGenero['pop'].length 
+                    sessionStorage.PERGUNTAS_RAP = listaRespostasCertaGenero['rap'].length 
+                    sessionStorage.PERGUNTAS_FUNK = listaRespostasCertaGenero['funk'].length 
+                    sessionStorage.PERGUNTAS_ROCK = listaRespostasCertaGenero['rock'].length 
+                    sessionStorage.PERGUNTAS_FORRO = listaRespostasCertaGenero['forro'].length  
+                    sessionStorage.PERGUNTAS_PAGODE = listaRespostasCertaGenero['pagode'].length 
+                    sessionStorage.PERGUNTAS_SERTANEJO = listaRespostasCertaGenero['sertanejo'].length 
+
+
                     console.log("pontuaçao total:", sessionStorage.PONTO_TOTAL);
 
                     return fetch("/usuarios/partida", {
@@ -392,20 +417,28 @@
                 if (respostaJogo == listaRespostasCertaGenero[genero][posicaoGenero]) {
                     if (genero == 'pop') {
                         pop += pontos;
+                        respostaCertaPOP +=1;
                     } else if (genero == 'mpb') {
                         mpb += pontos;
+                        respostaCertaMPB +=1;
                     } else if (genero == 'rap') {
                         rap += pontos;
+                        respostaCertaRAP +=1;
                     } else if (genero == 'funk') {
                         funk += pontos;
+                        respostaCertaFUNK +=1;
                     } else if (genero == 'rock') {
                         rock += pontos;
+                        respostaCertaROCK +=1;
                     } else if (genero == 'forro') {
                         forro += pontos;
+                        respostaCertaFORRO +=1;
                     } else if (genero == 'pagode') {
                         pagode += pontos;
+                        respostaCertaPAGODE +=1;
                     } else if (genero == 'sertanejo') {
                         sertanejo += pontos;
+                        respostaCertaSERTANEJO +=1;
                     }
 
                     pontuacaoTotal = mpb + rap + pop + funk + rock + forro + pagode + sertanejo;
