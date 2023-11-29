@@ -194,7 +194,7 @@ body{
 
 .p_genero{
     width: 320px; 
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .span-titulo-beneficio{
@@ -206,4 +206,112 @@ body{
     justify-content: space-evenly; 
     margin-top: 20px;
 }
+
+.box-conteudo-saude{
+    width: 33%; 
+    height: 300px; 
+    display: flex; 
+    flex-direction: column;
+}
+
+.txt-beneficio{
+    color: black; 
+    font-size: 20px;
+}
+
+.txt-topico-beneficio{
+    margin-top: 20px;
+}
+
+.imagem-beneficio{
+    width: 27%; 
+    height: 300px; 
+    background-color: black; 
+    border: 3px solid black; 
+    border-radius: 10px;
+}
+
+.img-beneficio{
+    width: 100%; 
+    height: 100%; 
+    border-radius: 10px;
+}
+
+.box-conteudo-saude2{
+    display: flex; 
+    justify-content: center; 
+    margin-top: 30px;
+}
+
+.box-conteudo-saude2-espaco{
+    width: 70%;
+}
+
+.sobre-mim{
+    display: flex; 
+    justify-content: center; 
+    width: 100%; 
+    background-image: url(); margin-top: 50px;
+}
+
+.sobre-mim-img{
+    width: 100%; 
+    border-radius: 20px;
+}
+
+.txt-genero{
+    display: flex; 
+    justify-content: center; 
+    margin-top: 75px;
+}
+
+.genero{
+    margin-top: 30px; 
+    height: 400px;
+}
+
+.fundo-genero{
+    display: flex; 
+    flex-direction: column;
+}
+
+.fundo-genero2{
+    display: flex; 
+    justify-content: space-evenly;
+}
+
+.img-genero{
+    width: 100%; 
+    height: 100%;
+}
+
+.saiba-mais-genero{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-saiba-mais{
+    margin-top: 20px;
+    width: 160px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #DD3A88;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+
+.div-para-espaco{
+    width: 7%;
+}
+
+.div-espaco-genero{
+    width: 5%;
+}
+
+
 

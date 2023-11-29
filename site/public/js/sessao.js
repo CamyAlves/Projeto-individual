@@ -49,7 +49,6 @@ function validarSessao() {
     var b_respostaCertaFORRO = document.getElementById("b_respostaCertaFORRO");
     var b_respostaCertaPAGODE = document.getElementById("b_respostaCertaPAGODE");
     var b_respostaCertaSERTANEJO = document.getElementById("b_respostaCertaSERTANEJO");
-
     var b_perguntampb = document.getElementById("b_perguntampb");
     var b_perguntapop = document.getElementById("b_perguntapop");
     var b_perguntarap = document.getElementById("b_perguntarap");
