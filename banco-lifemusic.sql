@@ -39,10 +39,19 @@ create table partida(
 
  
  select ponto.* from usuario join partida on idUsuario = fkUsuario join ponto on idPonto = fkPonto;
- 
- -- qnt de partidas nacionais jogada pelo usuario
-select nome, count(idPartida) from partida join usuario on idUsuario = fkUsuario where temaPartida = 'nacional' group by nome;
-select nome, count(idPartida) from partida join usuario on idUsuario = fkUsuario where temaPartida = 'internacional' group by nome;
 
--- suma dos pontos de todas as partidas 
+-- qnt de partidas nacionais jogada pelo usuario
+select count(idPartida) from partida join usuario on idUsuario = fkUsuario where temaPartida = 'nacional';
+select count(idPartida) from partida join usuario on idUsuario = fkUsuario where temaPartida = 'internacional';
+
+
+-- soma dos pontos de todas as partidas 
+select sum(pontuacaoTotal) from ponto join partida on idPonto = fkPonto where temaPartida = 'nacional';
+select sum(pontuacaoTotal) from ponto join partida on idPonto = fkPonto where temaPartida = 'internacional';
+
+-- maior pontuação de todas as partidas 
+select max(pontuacaoTotal) from ponto join partida on idPonto = fkPonto where temaPartida = 'nacional';
+select max(pontuacaoTotal) from ponto join partida on idPonto = fkPonto where temaPartida = 'internacional';
+
+
 drop database lifemusic;
