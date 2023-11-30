@@ -29,21 +29,13 @@
 
 <body>
 
-    <div class="header" style="border-radius: 0px 0px 40px 0px;">
+    <div class="header">
         <div class="nav-bar">
             <div class="container">
-                <img class="logo" src="img/logo.png" alt="">
-                <input class="input_pesquisar" placeholder="pesquisar">
-                <div class="hello">
-                    <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-                </div>
+                <img class="logo" src="../assets/img/logo.png" alt="">
                 <div class="nav">
-                    <span class="nickname">User</span>
+                    <span id="b_usuario" class="nickname">User</span>
                     <div class="foto-perfil"></div>
-
-                    <div class="btn-logout" onclick="limparSessao()">
-                        <h3>Sair</h3>
-                    </div>
                 </div>
             </div>
         </div>
@@ -54,69 +46,54 @@
 
         <div class="lateral">
             <div class="navbar-lateral">
+                <a href="cards.html"><span>Inicio</span></a>
+                <a href="dashboard.html"><span>Nacional</span></a>
+                <span>Internacional</span>
+                <div class="btn-logout" onclick="limparSessao()">
+                    <h3>Sair</h3>
+                </div>
             </div>
         </div>
 
-        <div class="dashboard">
-            <div class="container">
-                <div class="fundo-branco">
-                    <div class="box-cinza">
-
-                        <div class="fundo-cinza">
-                            <div class="fundo-cinza-elementos">
-                                <div class="titulo">
-                                    <span class="como-jogar">Como jogar?</h1>
-                                </div>
-                                <p class="textoComoJogar">1. <span class="span_rosa">Escutar</span> : Você tem aproximadamente 10 segundos  para identificar a música e a resposta correta.</p>
-                                <p class="textoComoJogar">2. <span class="span_rosa" >Quatro opções de escolha</span> serão apresentadas na tela. Você deve escolher a opção que corresponde à música que acabou de ouvir <span class="span_rosa">o mais rápido possível</span>.</p>
-                                <p class="textoComoJogar">3. Você tem apenas <span class="span_rosa">30 segundos</span> para fazer sua escolha. Quanto mais <span class="span_rosa">demorar menos pontos</span> ganhará.</p>
-                            </div>
+        <div class="dashboard-dash">
+            <div class="box">
+                <div class="analistic-grafico">
+                    <div class="box-analistic">
+                        <div class="fundo-analistic">
+                            <p style="color: black;">Partidas jogadas</p>
                         </div>
-                   
-                        <div class="jogar">
-                            <div class="jogar-elementos">
-                                <div class="texto_jogar_logo">
-                                    <span class="span_logo">Life</span><span class="span_logo_rosa"> Music</span>
-                                </div>
-        
-                                <div class="texto_jogar_Dvt">
-                                    <span class="span_titulo">Divirta-se</span>
-                                </div>
-        
-                                <div class="texto_jogar">    
-                                    <span class="span_jogar">O mais importante é se divertir. Esse jogo é uma ótima maneira de testar seu conhecimento musical e desfrutar de sua música favorita. </span>
-                                </div>
-        
-                                <div class="botao_jogar_dash">
-                                    <a href="telasJogo/tela-tema.html"><div class="btn-jogar">Jogar</div></a>
-                                </div>
-                            </div>
+                        <div class="fundo-analistic">
+                            <p style="color: black;">Pontos acumulados</p>
                         </div>
+                        <div class="fundo-analistic">
+                            <p style="color: black;">Melhor pontuação</p>
+                        </div>
+                    </div>
 
+                    <div class="box-grafico-linha">
+                        <div class="fundo-grafico-linha">
+
+                        </div>
+    
                     </div>
                 </div>
-            </div>
 
-            <div class="container">
+                <div class="fundo-grafico-bola">
 
-                <div class="fundo">
-                    <div class="graficoBola">
-                        <div class="grafico_b"><canvas id="myChart1" style="position: relative; height: 350px; width: 350px;"></canvas></div>
-                        <div class="grafico_b"><canvas id="myChart2" style="position: relative; height: 350px; width: 350px;"></canvas></div>
-                    </div>
-                    <div class="graficoBarra">
-                        <div><canvas id="myChart" style="position: relative; height: 25vh; width: 30vw;"></canvas></div>
-                    </div>
                 </div>
+
             </div>
+        </div>
+    </div>
 
-
+    </div>
 </body>
 
 </html>
 
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
 
     let proximaAtualizacao;
 
@@ -140,7 +117,7 @@
                 ],
                 hoverOffset: 4
             }]
-        }  
+        }
     });
 
     const bola2 = document.getElementById('myChart2');
@@ -161,7 +138,7 @@
                 ],
                 hoverOffset: 4
             }]
-        }  
+        }
     });
 
     const ctx = document.getElementById('myChart');
