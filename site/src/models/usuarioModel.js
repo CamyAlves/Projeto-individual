@@ -52,10 +52,56 @@ function partida(temaPartida, fkPonto, fkUsuario) {
 
 
 
-function graficoNacional(){
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
+function qntPartidaNacional(idUsuario){
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ",)
     var instrucao = `
-        select count(idPartida) from partida join usuario on idUsuario = fkUsuario where temaPartida = 'nacional';
+        select count(idPartida) as qntPartida from partida join usuario on idUsuario = fkUsuario where temaPartida = 'nacional' and idUsuario = ${idUsuario};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+
+function qntPartidaInternacional(temaPartida){
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", temaPartida)
+    var instrucao = `
+        select count(idPartida) from partida join usuario on idUsuario = fkUsuario where ${temaPartida} = 'internacional';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function somaTotalPontoNacional(){
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", temaPartida)
+    var instrucao = `
+        select sum(pontuacaoTotal) from ponto join partida on idPonto = fkPonto where ${temaPartida} = 'internacional';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function somaTotalPontoInternacional(){
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", temaPartida)
+    var instrucao = `
+        select sum(pontuacaoTotal) from ponto join partida on idPonto = fkPonto where ${temaPartida} = 'internacional';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function melhorPontoNacional(){
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", temaPartida)
+    var instrucao = `
+        select sum(pontuacaoTotal) from ponto join partida on idPonto = fkPonto where ${temaPartida} = 'internacional';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function melhorPontoInternacional(){
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", temaPartida)
+    var instrucao = `
+        select sum(pontuacaoTotal) from ponto join partida on idPonto = fkPonto where ${temaPartida} = 'internacional';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -66,5 +112,6 @@ module.exports = {
     cadastrar,
     pontuacao,
     partida,
-    graficoNacional
+    qntPartidaNacional,
+    qntPartidaInternacional
 };
