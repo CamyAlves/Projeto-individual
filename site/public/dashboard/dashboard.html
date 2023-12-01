@@ -61,13 +61,15 @@
                     <div class="box-analistic">
                         <div class="fundo-analistic">
                             <p style="color: black;">Partidas jogadas</p>
-                            <span id="teste" style="color: black;"></span>
+                            <span id="qnt" style="color: black;"></span>
                         </div>
                         <div class="fundo-analistic">
                             <p style="color: black;">Pontos acumulados</p>
+                            <span id="soma" style="color: black;"></span>
                         </div>
                         <div class="fundo-analistic">
                             <p style="color: black;">Melhor pontuação</p>
+                            <span id="melhor" style="color: black;">d</span>
                         </div>
                     </div>
 
@@ -75,7 +77,7 @@
                         <div class="fundo-grafico-linha">
 
                         </div>
-    
+
                     </div>
                 </div>
 
@@ -96,22 +98,23 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
 
-function obterDadosGrafico(idUsuario) {
+    function obterDadosGrafico(idUsuario) {
+        fetch(`/usuarios/ultimas/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                return response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
 
+                    qnt.innerHTML = resposta[0].qntPartida;
+                    soma.innerHTML = resposta[0].somaPonto;
+                    melhor.innerHTML = resposta[0].melhorPonto;
+                    // plotarGrafico(resposta, idUsuario);
 
-fetch(`/usuarios/ultimas/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
-    if (response.ok) {
-        response.json().then(function (resposta) {
-            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-            resposta.reverse();
-
-            teste.innerHTML = resposta[0].qntPartida;
-            // plotarGrafico(resposta, idUsuario);
-
-        });
+                })
+            }
+        })
     }
 
-})
 
-}
+
 </script>

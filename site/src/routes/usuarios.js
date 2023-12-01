@@ -21,8 +21,11 @@ router.post("/partida", function (req, res) {
 });
 
 router.get("/ultimas/:idUsuario", function (req, res) {
-    usuarioController.qntPartidaNacional(req, res);
+    usuarioController.analistNacional(req, res);
 });
 
+router.get("/ultimas/:idUsuario", function (req, res) {
+    usuarioController.analistInternacional(req, res);
+});
 
 module.exports = router;
