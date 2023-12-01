@@ -20,7 +20,7 @@
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao()">
+<body>
 
     <div class="header">
         <div class="nav-bar">
@@ -94,7 +94,7 @@
             </div>
             <div class="fundo">
                 <div class="graficoBarra">
-                    <div><canvas id="myChart" style="position: relative; height: 13vh; width: 30vw;"></canvas></div>
+                    <div id="grafico"></div>
                 </div>
             </div>
         </div>
@@ -124,6 +124,9 @@
         window.location = "../tela-tema.html";
     }
 
+    if(sessionStorage.PONTO_RESPOSTA_CERTA_MPB != null){
+        grafico.innerHTML = `<div style=" display: flex; justify-content: center; color: #000; margin-top: 10px;">Ultima jogada</div><canvas id="myChart" style="position: relative; height: 13vh; width: 30vw;"></canvas>`;
+    }
 
     const ctx = document.getElementById('myChart');
 
@@ -154,6 +157,8 @@
             }
         }
     });
+
+
 </script>
 
 </html>
