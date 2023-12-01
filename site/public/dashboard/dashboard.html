@@ -24,7 +24,14 @@
     <!--FONT AWESOME-->
     <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
-
+<style>
+ #aqui{
+    background-color: #dd3a88;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+</style>
 <!-- <body onload=" atualizarFeed()"> -->
 
 <body onload="obterDadosNacional(sessionStorage.ID_USUARIO)">
@@ -46,9 +53,15 @@
 
         <div class="lateral">
             <div class="navbar-lateral">
-                <a href="cards.html"><span>Inicio</span></a>
-                <a href="dashboard.html"><span>Nacional</span></a>
-                <span>Internacional</span>
+                <div class="fundo-nav">
+                    <a href="cards.html"><span>Inicio</span></a>
+                </div>
+                <div id="aqui" class="fundo-nav">
+                    <a href="dashboard.html"><span>Nacional</span></a>
+                </div>
+                <div class="fundo-nav">
+                    <span>Internacional</span>
+                </div>
                 <div class="btn-logout" onclick="limparSessao()">
                     <h3>Sair</h3>
                 </div>
@@ -60,16 +73,19 @@
                 <div class="analistic-grafico">
                     <div class="box-analistic">
                         <div class="fundo-analistic">
-                            <p style="color: black;">Partidas jogadas</p>
-                            <span id="qnt" style="color: black;"></span>
+                            <span class="titulo">Partidas jogadas</span>
+                            <span id="qnt" class="dados"></span>
+                            <span>Partidas</span>
                         </div>
                         <div class="fundo-analistic">
-                            <p style="color: black;">Pontos acumulados</p>
-                            <span id="soma" style="color: black;"></span>
+                            <span class="titulo">Pontos acumulados</span>
+                            <span id="soma" class="dados"></span>
+                            <span>Pontos</span>
                         </div>
                         <div class="fundo-analistic">
-                            <p style="color: black;">Melhor pontuação</p>
-                            <span id="melhor" style="color: black;">d</span>
+                            <span class="titulo">Melhor pontuação</span>
+                            <span id="melhor" class="dados">d</span>
+                            <span>Pontos</span>
                         </div>
                     </div>
 

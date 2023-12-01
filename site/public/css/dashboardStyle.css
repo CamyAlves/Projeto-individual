@@ -17,8 +17,9 @@ body, html{
 
 .lateral .navbar-lateral{
     display: flex; 
-    align-items: center; 
     flex-direction: column;
+    width: 100%;
+    align-items: center;
 }
 
 .dashboard{
@@ -178,6 +179,7 @@ body, html{
 .dashboard-dash{
     width: 100%;
     margin-top: 50px;
+    color: #000;
 }
 
 .box{
@@ -204,7 +206,18 @@ body, html{
     height: 150px; 
     border-radius: 10px;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.fundo-analistic .titulo{
+    font-size: 21px;
+    margin-top: 13px;
+}
+
+.fundo-analistic .dados{
+    font-size: 40px;
+    margin-top: 13px;
 }
 
 .box-grafico-linha{
@@ -227,6 +240,10 @@ body, html{
     border-radius: 10px;
 }
   
+a{
+    text-decoration: none;
+    color: white;
+}
 
 
 
