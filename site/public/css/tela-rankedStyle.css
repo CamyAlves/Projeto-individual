@@ -1,6 +1,10 @@
+body{
+    background-color: black;
+}
+
 .tabela-rakend{
     border-collapse: collapse; 
-    width: 30%;
+    width: 95%;
 }
 
 .tabela-rakend .linha-table{
