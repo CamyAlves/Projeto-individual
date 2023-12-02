@@ -71,6 +71,19 @@ function analistInternacional(idUsuario){
 }
 
 
+function ranked(){
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ",)
+    var instrucao = `
+        select nome as nomeUsuario, temaPartida as tema, sum(pontuacaoTotal) as pontuacao from ponto 
+	        join partida on idPonto = fkPonto 
+		        join usuario on idUsuario = fkUsuario 
+			        group by nome, temaPartida
+				    ORDER BY pontuacao;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 
 
 module.exports = {
@@ -79,5 +92,6 @@ module.exports = {
     pontuacao,
     partida,
     analistNacional,
-    analistInternacional
+    analistInternacional,
+    ranked
 };

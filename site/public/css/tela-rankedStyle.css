@@ -1,0 +1,10 @@
+.tabela-rakend{
+    border-collapse: collapse; 
+    width: 30%;
+}
+
+.tabela-rakend .linha-table{
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}

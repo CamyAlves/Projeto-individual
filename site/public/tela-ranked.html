@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AquaTech | Cadastro</title>
+
+    <script src="./js/sessao.js"></script>
+
+    <link rel="icon" href="./assets/icon/favicon2.ico" />
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/tela-rankedStyle.css">
+    <link rel="stylesheet" href="css/CadastroStyle.css">
+    <link rel="stylesheet" href="css/GlobalStyle.css">
+</head>
+
+<body onload="obterDadosRanked()">
+    <!--header inicio-->
+    <div class="header">
+        <div class="nav-bar">
+            <div class="container">
+                <img src="../assets/img/logo.png" alt="" class="logo">
+                <div class="nav">
+                    <span class="home"><a href="index.html">Home</a></span>
+                    <a href="Login.html"><button>Login</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="tabela-rakend">
+    <thead>
+        <tr>
+            <th class="linha-table"></th>
+            <th class="linha-table">Nome</th>
+            <th class="linha-table">Tema</th>
+            <th class="linha-table">pontuacao total</th>
+        </tr>
+    </thead>
+    <tbody id="dadosRanked">
+        
+    </tbody>
+</table>
+</body>
+
+</html>
+
+<script>
+
+    function obterDadosRanked() {
+            fetch(`/usuarios/ultimas`, { cache: 'no-store' }).then(function (response) {
+                if (response.ok) {
+                    return response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        resposta.reverse();
+                        for (var posicao = 0; posicao < resposta.length; posicao+=1) {
+                            dadosRanked.innerHTML += `<tr><td class="linha-table"></td><td class="linha-table">${resposta[posicao].nomeUsuario}</td> <td class="linha-table">${resposta[posicao].tema}</td> <td class="linha-table">${resposta[posicao].pontuacao}</td></tr>`;
+                        }
+
+                    })
+                }
+            })
+        }
+</script>
