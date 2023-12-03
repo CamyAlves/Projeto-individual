@@ -15,6 +15,10 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet">
+
+
   <link rel="stylesheet" href="css/CadastroStyle.css">
   <link rel="stylesheet" href="css/GlobalStyle.css">
 </head>
@@ -74,150 +78,173 @@
     </div>
   </div>
 
-  <!--footer inicio-->
-  <div class="footer">
-    <div class="container">
-      <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
-      <span class="version">v1.0.0</span>
+
+  <footer>
+    <div class="footer">
+      <div class="row">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+        <a href="#"><i class="fa fa-youtube"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+      </div>
+
+      <div class="row">
+        <ul>
+          <li><a href="#">Contact us</a></li>
+          <li><a href="#">Our Services</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Career</a></li>
+        </ul>
+      </div>
+
+      <div class="row">
+        LifeMusic Copyright © 2023 || Designed By: Camilly
+      </div>
     </div>
-  </div>
-  <!--footer fim-->
+  </footer>
 
 
-  <div id="modalCadastro" class="modal-cadastro" >
+  <div id="modalCadastro" class="modal-cadastro">
     <div class="modal-fundo">
       <div class="modal-informacao">
         <img src="assets/icon/icon-positivo.png" alt="" class="icon-certo">
-        <span class="span-modalCadastro" >Cadastro efetuado com sucesso!</span>
+        <span class="span-modalCadastro">Cadastro efetuado com sucesso!</span>
       </div>
     </div>
   </div>
 
-
-
-  <script>
-    function abrirModalCadastro() {
-      modalCadastro.style.display = 'flex';
+  <style>
+    .footer {
+      margin-top: 20px;
     }
+  </style>
 
-    function fecharModal() {
-      modalCadastro.style.display = 'none';
-    }
-
-    function cadastrar() {
-      //Recupere o valor da nova input pelo nome do id
-      // Agora vá para o método fetch logo abaixo
-      var nome = input_nome.value;
-      var email = input_email.value;
-      var dataNasc = input_nasc.value;
-      var senha = input_senha.value;
-      var confirmaSenha = input_confSenha.value;
-
-      nome.replaceAll(" ", "");
-      var txtObrigatorio = '*Obrigatório';
-      var validaEmail = /^[A-Za-z0-9.-]{3,}@[A-Za-z0-9]+\.[A-Za-z]{2,}$/;
-      var validaSenha = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[.@$!*?&])[A-Za-z0-9@$!*?&.-]{8,}$/;
-
-      p_erroNome.innerHTML = '';
-      p_erroEmail.innerHTML = '';
-      p_erroData.innerHTML = '';
-      p_erroSenha.innerHTML = '';
-      p_erroConfSenha.innerHTML = '';
-
-
-      if (nome == "") {
-        p_erroNome.innerHTML = txtObrigatorio;
-      }
-
-      if (email == "") {
-        p_erroEmail.innerHTML = txtObrigatorio;
-      } else if (!validaEmail.test(email)) {
-        p_erroEmail.innerHTML = '*Email inválido';
-      }
-
-      if (dataNasc == "") {
-        p_erroData.innerHTML = txtObrigatorio;
-      }
-
-      if (senha == "") {
-        p_erroSenha.innerHTML = txtObrigatorio;
-
-      } else if (!validaSenha.test(senha)) {
-        p_erroSenha.innerHTML = '*Deve conter pelo menos 1 letra maiúscula, 1 letra minúscula, 1 caractere especial, 1 número e ter no mínimo 8 caracteres.';
-        p_erroSenha.style.fontSize = "11px";
-      }
-
-      if (confirmaSenha == "") {
-        p_erroConfSenha.innerHTML = txtObrigatorio;
-
-      } else if (senha != confirmaSenha) {
-        p_erroConfSenha.innerHTML = '*As senhas não correpondem';
-      }
-
-      if (p_erroNome.innerHTML != '' || p_erroEmail.innerHTML != '' || p_erroData.innerHTML != '' || p_erroSenha.innerHTML != '' || p_erroConfSenha.innerHTML != '') {
-        botao.style.marginTop = "8px";
-        return false;
-      } else {
-
-        // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            // crie um atributo que recebe o valor recuperado aqui
-            // Agora vá para o arquivo routes/usuario.js
-            nomeServer: nome,
-            emailServer: email,
-            dataNascServer: dataNasc,
-            senhaServer: senha
-          }),
-        })
-          .then(function (resposta) {
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-              abrirModalCadastro();
-
-              setTimeout(() => {
-                    fecharModal();
-                    window.location = "login.html";
-                }, "1000");
-
-              limparFormulario();
-              finalizarAguardar();
-            } else {
-              throw "Houve um erro ao tentar realizar o cadastro!";
-            }
-          })
-          .catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
-          });
-
-        return false;
-      }
-    }
-
-    function finalizarAguardar(texto) {
-      var divAguardar = document.getElementById("div_aguardar");
-
-      if (divAguardar) {
-        divAguardar.style.display = "none";
-      }
-
-      var divErrosLogin = document.getElementById("div_erros_login");
-
-      if (divErrosLogin) {
-        if (texto) {
-          divErrosLogin.style.display = "flex";
-          divErrosLogin.innerHTML = texto;
-        }
-      }
-    }
-  </script>
 
 </body>
 
 </html>
+
+
+<script>
+  function abrirModalCadastro() {
+    modalCadastro.style.display = 'flex';
+  }
+
+  function fecharModal() {
+    modalCadastro.style.display = 'none';
+  }
+
+  function cadastrar() {
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nome = input_nome.value;
+    var email = input_email.value;
+    var dataNasc = input_nasc.value;
+    var senha = input_senha.value;
+    var confirmaSenha = input_confSenha.value;
+
+    nome.replaceAll(" ", "");
+    var txtObrigatorio = '*Obrigatório';
+    var validaEmail = /^[A-Za-z0-9.-]{3,}@[A-Za-z0-9]+\.[A-Za-z]{2,}$/;
+    var validaSenha = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[.@$!*?&])[A-Za-z0-9@$!*?&.-]{8,}$/;
+
+    p_erroNome.innerHTML = '';
+    p_erroEmail.innerHTML = '';
+    p_erroData.innerHTML = '';
+    p_erroSenha.innerHTML = '';
+    p_erroConfSenha.innerHTML = '';
+
+
+    if (nome == "") {
+      p_erroNome.innerHTML = txtObrigatorio;
+    }
+
+    if (email == "") {
+      p_erroEmail.innerHTML = txtObrigatorio;
+    } else if (!validaEmail.test(email)) {
+      p_erroEmail.innerHTML = '*Email inválido';
+    }
+
+    if (dataNasc == "") {
+      p_erroData.innerHTML = txtObrigatorio;
+    }
+
+    if (senha == "") {
+      p_erroSenha.innerHTML = txtObrigatorio;
+
+    } else if (!validaSenha.test(senha)) {
+      p_erroSenha.innerHTML = '*Deve conter pelo menos 1 letra maiúscula, 1 letra minúscula, 1 caractere especial, 1 número e ter no mínimo 8 caracteres.';
+      p_erroSenha.style.fontSize = "11px";
+    }
+
+    if (confirmaSenha == "") {
+      p_erroConfSenha.innerHTML = txtObrigatorio;
+
+    } else if (senha != confirmaSenha) {
+      p_erroConfSenha.innerHTML = '*As senhas não correpondem';
+    }
+
+    if (p_erroNome.innerHTML != '' || p_erroEmail.innerHTML != '' || p_erroData.innerHTML != '' || p_erroSenha.innerHTML != '' || p_erroConfSenha.innerHTML != '') {
+      botao.style.marginTop = "8px";
+      return false;
+    } else {
+
+      // Enviando o valor da nova input
+      fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          nomeServer: nome,
+          emailServer: email,
+          dataNascServer: dataNasc,
+          senhaServer: senha
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+            abrirModalCadastro();
+
+            setTimeout(() => {
+              fecharModal();
+              window.location = "login.html";
+            }, "1000");
+
+            limparFormulario();
+            finalizarAguardar();
+          } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+          finalizarAguardar();
+        });
+
+      return false;
+    }
+  }
+
+  function finalizarAguardar(texto) {
+    var divAguardar = document.getElementById("div_aguardar");
+
+    if (divAguardar) {
+      divAguardar.style.display = "none";
+    }
+
+    var divErrosLogin = document.getElementById("div_erros_login");
+
+    if (divErrosLogin) {
+      if (texto) {
+        divErrosLogin.style.display = "flex";
+        divErrosLogin.innerHTML = texto;
+      }
+    }
+  }
+</script>

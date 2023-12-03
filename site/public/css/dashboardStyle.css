@@ -10,6 +10,7 @@ body, html{
 .lateral{
     background-color: #0B0B0B; 
     width: 10%; 
+    height: 670px;
     display: flex; 
     align-items: center; 
     justify-content: space-between;
