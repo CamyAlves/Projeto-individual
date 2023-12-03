@@ -3,16 +3,21 @@
 }
 
 body{
-    background-image: url(../assets/img/fundo-preto-ponto.png);
+    background-image: url(../assets/img/fundo-ponto.png);
+    background-repeat: no-repeat;
+    background-color: black;
 }
 
 .fundo-acerto{
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .span-acerto{
-    font-size: 37px; margin-left: 40px;
+    font-size: 45px; 
+    margin-left: 70px;
+
 }
+
 
 .fundo{
     width: 100%; 
@@ -35,8 +40,8 @@ body{
 }
 
 .titulo{
-    font-size: 57px; 
-    margin-top: 75px;
+    font-size: 69px; 
+    margin-top: 50px;
 }
 
 .box-pontuacao{
@@ -58,8 +63,8 @@ body{
 }
 
 .txt-tema{
-    font-size: 25px; 
-    margin-top: 10px;
+    font-size: 30px; 
+    margin-top: 12px;
 }
 
 .box-ponto{
@@ -71,15 +76,14 @@ body{
 }
 
 .txt-ponto{
-    font-size: 25px; 
-    margin: 5px;
+    font-size: 30px; 
+    margin: 7px;
 }
 
 .pontoTotal{
     display: flex; 
     justify-content: center; 
-    margin-top: 20px;
-    background-image: url(../assets/img/fundo-ponto-total.png);
+    margin-top: 26px;
     width: 42%;
     height: 110px;
 }
@@ -87,18 +91,18 @@ body{
 .txt-pontoTotal{
     color: white;
     margin-top: 27px;
-    font-size: 25px;
+    font-size: 30px;
 }
 
 .total{
     color: white;
     margin-top: 27px;
-    font-size: 25px; 
+    font-size: 30px; 
     margin-left: 10px;
 }
 
 .fundo-btn{
-    margin-top: 40px;
+    margin-top: 80px;
     display: flex; 
     justify-content: space-evenly;
 }

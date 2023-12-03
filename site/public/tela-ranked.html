@@ -26,8 +26,7 @@
             <div class="container">
                 <img src="../assets/img/logo.png" alt="" class="logo">
                 <div class="nav">
-                    <span class="home"><a href="index.html">Home</a></span>
-                    <a href="Login.html"><button>Login</button></a>
+                   
                 </div>
             </div>
         </div>
@@ -71,7 +70,7 @@
                         <th class="linha-table">pontuacao total</th>
                     </tr>
                 </thead>
-                <tbody id="dadosRankedNacional">
+                <tbody id="dadosRankedMelhor">
     
                 </tbody>
             </table>
@@ -93,10 +92,12 @@
                     resposta.reverse();
                     for (var posicao = 0; posicao < resposta.length; posicao += 1) {
                         dadosRanked.innerHTML += `<tr><td class="linha-table"></td><td class="linha-table">${resposta[posicao].nomeUsuario}</td> <td class="linha-table">${resposta[posicao].tema}</td> <td class="linha-table">${resposta[posicao].pontuacao}</td></tr>`;
+                        dadosRankedMelhor.innerHTML += `<tr><td class="linha-table"></td><td class="linha-table">${resposta[posicao].nomeUsuario}</td> <td class="linha-table">${resposta[posicao].tema}</td> <td class="linha-table">${resposta[posicao].pontuacaoMelhor}</td></tr>`;
                     }
 
                 })
             }
         })
     }
+
 </script>

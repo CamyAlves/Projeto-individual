@@ -32,4 +32,6 @@ router.get("/ultimas", function (req, res) {
     usuarioController.ranked(req, res);
 });
 
+
+
 module.exports = router;

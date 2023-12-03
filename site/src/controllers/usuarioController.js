@@ -220,6 +220,9 @@ function ranked(req, res) {
 
 
 
+
+
+
 module.exports = {
     autenticar,
     cadastrar,
