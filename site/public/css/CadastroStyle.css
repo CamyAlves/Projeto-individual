@@ -23,12 +23,12 @@ body{
 .inputs{
     display: flex;
     margin: 3px;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .inputs .container .txtCadastro{
     margin-top: 20px;
-    font-size: 38px;
+    font-size: 45px;
     display: flex;
     justify-content: center;
 }
@@ -43,7 +43,7 @@ body{
     border-left: 7px solid #DD3A88;
     border-radius: 8px;
     background-color: #1B1B1B;
-    height: 34px;
+    height: 40px;
     width: 280px;
     color: white;
     font-size: 14px;
@@ -55,13 +55,13 @@ body{
 
 .btnCadastro{
     width: 289px;
-    height: 30px;
+    height: 34px;
     border: 0px;
     border-radius: 5px;
     background-color: #DD3A88;
     color: white;
-    font-size: 19px;
-    margin-top: 50px;
+    font-size: 21px;
+    margin-top: 60px;
 }
 
 

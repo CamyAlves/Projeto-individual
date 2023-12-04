@@ -57,11 +57,6 @@
             <input type="email" class="inputEmail" id="input_email" placeholder="     Email@email.com">
             <p id="p_erroEmail" class="msgErro"></p>
           </div>
-          <div class="dataNascimento">
-            <p>Data de nascimento</p>
-            <input type="date" class="inputNasc" id="input_nasc" placeholder="     dd-mm-aaaa">
-            <p id="p_erroData" class="msgErro"></p>
-          </div>
           <div class="senha">
             <p>Senha</p>
             <input type="password" class="inputSenha" id="input_senha" placeholder="     **********">
@@ -116,7 +111,7 @@
 
   <style>
     .footer {
-      margin-top: 20px;
+      margin-top: 40px;
     }
   </style>
 
@@ -140,7 +135,6 @@
     // Agora vá para o método fetch logo abaixo
     var nome = input_nome.value;
     var email = input_email.value;
-    var dataNasc = input_nasc.value;
     var senha = input_senha.value;
     var confirmaSenha = input_confSenha.value;
 
@@ -151,7 +145,6 @@
 
     p_erroNome.innerHTML = '';
     p_erroEmail.innerHTML = '';
-    p_erroData.innerHTML = '';
     p_erroSenha.innerHTML = '';
     p_erroConfSenha.innerHTML = '';
 
@@ -166,16 +159,11 @@
       p_erroEmail.innerHTML = '*Email inválido';
     }
 
-    if (dataNasc == "") {
-      p_erroData.innerHTML = txtObrigatorio;
-    }
-
     if (senha == "") {
       p_erroSenha.innerHTML = txtObrigatorio;
 
     } else if (!validaSenha.test(senha)) {
       p_erroSenha.innerHTML = '*Deve conter pelo menos 1 letra maiúscula, 1 letra minúscula, 1 caractere especial, 1 número e ter no mínimo 8 caracteres.';
-      p_erroSenha.style.fontSize = "11px";
     }
 
     if (confirmaSenha == "") {
@@ -185,7 +173,7 @@
       p_erroConfSenha.innerHTML = '*As senhas não correpondem';
     }
 
-    if (p_erroNome.innerHTML != '' || p_erroEmail.innerHTML != '' || p_erroData.innerHTML != '' || p_erroSenha.innerHTML != '' || p_erroConfSenha.innerHTML != '') {
+    if (p_erroNome.innerHTML != '' || p_erroEmail.innerHTML != '' || p_erroSenha.innerHTML != '' || p_erroConfSenha.innerHTML != '') {
       botao.style.marginTop = "8px";
       return false;
     } else {
@@ -201,7 +189,6 @@
           // Agora vá para o arquivo routes/usuario.js
           nomeServer: nome,
           emailServer: email,
-          dataNascServer: dataNasc,
           senhaServer: senha
         }),
       })
