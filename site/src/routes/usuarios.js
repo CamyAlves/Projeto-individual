@@ -24,13 +24,10 @@ router.get("/ultimas/:idUsuario", function (req, res) {
     usuarioController.analistNacional(req, res);
 });
 
-router.get("/ultimas/:idUsuario", function (req, res) {
-    usuarioController.analistInternacional(req, res);
-});
-
 router.get("/ultimas", function (req, res) {
     usuarioController.ranked(req, res);
 });
+
 
 
 

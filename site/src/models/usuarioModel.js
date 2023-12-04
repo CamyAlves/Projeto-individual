@@ -61,14 +61,7 @@ function analistNacional(idUsuario){
     return database.executar(instrucao);
 }
 
-function analistInternacional(idUsuario){
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ",)
-    var instrucao = `
-    select count(idPartida) as qntPartida, sum(pontuacaoTotal) as somaPonto, max(pontuacaoTotal) as melhorPonto from ponto join partida on idPonto = fkPonto join usuario on idUsuario = fkUsuario where temaPartida = 'internacional' and idUsuario = ${idUsuario};
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
+
 
 
 function ranked(){
@@ -87,12 +80,14 @@ function ranked(){
 
 
 
+
+
+
 module.exports = {
     autenticar,
     cadastrar,
     pontuacao,
     partida,
     analistNacional,
-    analistInternacional,
     ranked
 };
