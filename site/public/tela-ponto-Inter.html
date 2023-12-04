@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/GlobalStyle.css">
+    <link rel="stylesheet" href="css/tela-pontoStyle.css">
+</head>
+
+<body>
+    <div class="fundo-acerto">
+        <span class="span-acerto"><span class="span-acertoid" id="b_respostaCerta">0</span>/25</span>
+    </div>
+
+    <div class="fundo">
+        <div class="img-fundo">
+            <div class="fundo-conteudo">
+                <span class="titulo">Pontuação</span>
+
+                <div id="box-pontuacaoInter" class="box-pontuacao">
+
+                    <div class="box-conteudo">
+                        <div class="box-tema">
+                            <span class="txt-tema">R&B</span>
+                            <span class="txt-tema">HipHop</span>
+                            <span class="txt-tema">Rap</span>
+                        </div>
+                        <div class="box-ponto">
+                            <span class="txt-ponto" id="b_reb">0</span>
+                            <span class="txt-ponto" id="b_hiphop">0</span>
+                            <span class="txt-ponto" id="b_rap">0</span>
+                        </div>
+                    </div>
+
+                    <div class="box-conteudo">
+                        <div class="box-tema">
+                            <span class="txt-tema">Rock</span>
+                            <span class="txt-tema">Pop</span>
+                            <span class="txt-tema">Kpop</span>
+                        </div>
+                        <div class="box-ponto">
+                            <span class="txt-ponto" id="b_rock">0</span>
+                            <span class="txt-ponto" id="b_pop">0</span>
+                            <span class="txt-ponto" id="b_kpop">0</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="pontoTotalInter" class="pontoTotal">
+                    <div class="txt-pontoTotal">Total:</div>
+                    <div id="b_pontuacao" class="total">0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="fundo-btn">
+            <div class="div_alt"></div>
+            <a href="dashboard/cards.html"><div class="btn">Voltar</div></a>
+            <a href="tela-ranked.html"><div class="btn">Ranked</div></a>
+            <div class="div_alt"></div>
+        </div>
+
+
+</body>
+
+</html>
+<script>
+    b_pontuacao.innerHTML = sessionStorage.PONTO_TOTAL;
+    b_reb.innerHTML = sessionStorage.PONTO_REB;
+    b_rap.innerHTML = sessionStorage.PONTO_RAP;
+    b_pop.innerHTML = sessionStorage.PONTO_POP;
+    b_hiphop.innerHTML = sessionStorage.PONTO_HIPHOP;
+    b_rock.innerHTML = sessionStorage.PONTO_ROCK;
+    b_kpop.innerHTML = sessionStorage.PONTO_KPOP;
+    b_respostaCerta.innerHTML = sessionStorage.PONTO_RESPOSTA_CERTA;
+
+
+
+    console.log("total: ", sessionStorage.PONTO_TOTAL);
+    console.log("mpb: ", sessionStorage.PONTO_MPB);
+    console.log("rap: ", sessionStorage.PONTO_RAP);
+    console.log("pop: ", sessionStorage.PONTO_POP);
+    console.log("funk: ", sessionStorage.PONTO_FUNK);
+    console.log("rock: ", sessionStorage.PONTO_ROCK);
+    console.log("forro: ", sessionStorage.PONTO_FORRO);
+</script>

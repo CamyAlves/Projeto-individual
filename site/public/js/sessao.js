@@ -11,6 +11,10 @@ function validarSessao() {
     var forro = sessionStorage.PONTO_FORRO;
     var pagode = sessionStorage.PONTO_PAGODE;
     var sertanejo = sessionStorage.PONTO_SERTANEJO;
+    var hiphop = sessionStorage.PONTO_HIPHOP;
+    var kpop = sessionStorage.PONTO_KPOP;
+    var reb = sessionStorage.PONTO_REB;
+
     var respostaCerta = sessionStorage.PONTO_RESPOSTA_CERTA;
     var respostaCertaMPB = sessionStorage.PONTO_RESPOSTA_CERTA_MPB;
     var respostaCertaPOP = sessionStorage.PONTO_RESPOSTA_CERTA_POP;
@@ -40,6 +44,11 @@ function validarSessao() {
     var b_forro = document.getElementById("b_forro");
     var b_pagode = document.getElementById("b_pagode");
     var b_sertanejo = document.getElementById("b_sertanejo");
+    var b_hiphop = document.getElementById("b_hiphop");
+    var b_kpop = document.getElementById("b_kpop");
+    var b_reb = document.getElementById("b_reb");
+
+
     var b_respostaCerta = document.getElementById("b_respostaCerta");
     var b_respostaCertaMPB = document.getElementById("b_respostaCertaMPB");
     var b_respostaCertaPOP = document.getElementById("b_respostaCertaPOP");
@@ -70,6 +79,10 @@ function validarSessao() {
         b_forro.innerHTML = forro;
         b_pagode.innerHTML = pagode;
         b_sertanejo.innerHTML = sertanejo;
+        b_hiphop.innerHTML = hiphop;
+        b_kpop.innerHTML = kpop;
+        b_reb.innerHTML = reb;
+
         b_respostaCerta.innerHTML = respostaCerta;
         b_respostaCertaMPB.innerHTML = respostaCertaMPB;
         b_respostaCertaPOP.innerHTML = respostaCertaPOP;

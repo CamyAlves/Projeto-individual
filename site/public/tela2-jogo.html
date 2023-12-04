@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,32 +8,33 @@
     <link rel="stylesheet" href="css/GlobalStyle.css">
     <link rel="stylesheet" href="css/tela-jogoStyle.css">
 </head>
+
 <body>
 
 
     <div class="header">
-        <div class="nav-bar"> 
+        <div class="nav-bar">
             <div class="container">
-                <img class="logo" src="../img/logo.png" alt="" style="width: 200px;">
-                <div class="nav"> 
-                    <span class="nickname">User</span>
+                <img src="../assets/img/logo.png" alt="" class="logo">
+                <div class="nav">
+                    <span>usuário</span>
                     <div class="foto-perfil"></div>
-                </div>     
+                </div>
             </div>
         </div>
     </div>
+
 
     <audio id="musica">
         <source id="source_musica" type="audio/mpeg">
     </audio>
 
-    <video id="gifComecar" class="gif-Comecar"></video>
 
     <div class="perguntas">
         <div class="fundo-claro">
 
             <span id="rodadas" class="rodada"></span>
-            
+
             <div class="titulo">
                 <span style="margin-top: 10px;">Qual é a <span style="color: #ca156c;">música?</span></span>
             </div>
@@ -40,25 +42,25 @@
                 <p class="">Nacional</p>
             </div>
             <span id="temporizador" class="temporizador"></span>
-            
-            
+
+
             <div class="resposta">
                 <div class="container">
                     <div class="box">
                         <button id="resposta1" class="btn-resposta" onclick="button1()" disabled>.</button>
                         <button id="resposta2" class="btn-resposta" onclick="button2()" disabled>.</button>
                     </div>
-                    
+
                     <div class="box">
                         <button id="resposta3" class="btn-resposta" onclick="button3()" disabled>.</button>
-                        <button id="resposta4" class="btn-resposta" onclick="button4()" disabled>.</button><br>
+                        <button id="resposta4" class="btn-resposta" onclick="button4()" disabled>.</button>
                     </div>
                 </div>
-            </div>    
+            </div>
         </div>
-    </div> 
+    </div>
 
-   
+
     <div class="container">
         <div class="botoes">
             <div class="voltar">
@@ -68,48 +70,49 @@
                 <div class="btn-comecar" onclick="comecarJogo()">Começar Jogo</div>
             </div>
         </div>
-        <div id="resultado" class="pontuacao">Pontos: 0</div>
     </div>
-    
-    
+
+    <div class="fundo-video">
+        <video id="gifComecar" class="gif-Comecar"></video>
+    </div>
+
 
 </body>
+
 </html>
 
 <script>
-     var segundo = 0;
+    var segundo = 0;
     var perguntaAtual = 0;
     var respostaJogo = '';
     var btnComecar = 1;
+    var posicao = 0;
+    var respostaCerta = 0;
+    
 
-    var mpb = Number(0);
     var rap = Number(0);
     var pop = Number(0);
-    var funk = Number(0);
     var rock = Number(0);
-    var forro = Number(0);
-    var pagode = Number(0);
-    var sertanejo = Number(0);
-    var rEb = null;
-    var hiphop = null;
-    var kpop = null;
+    var reb = Number(0);
+    var hiphop = Number(0);
+    var kpop = Number(0);
+    var pontuacaoTotal = 0;
 
 
-    var listaMusica = ['assets/musica/Man in the Mirror.mp3', 'assets/musica/Cigana.mp3', 'assets/musica/destinys-child-dangerously-in-love.mp3', 'assets/musica/justin-bieber-one-time.mp3', 'assets/musica/water-tyle.mp3'];
+    var listaMusica = ['assets/musica/Man in the Mirror.mp3', 'assets/musica/Cigana.mp3', 'assets/musica/destinys-child-dangerously-in-love.mp3', 'assets/musica/justin-bieber-one-time.mp3', 'assets/musica/water-tyle.mp3', 'assets/musica/Cigana.mp3', 'assets/musica/destinys-child-dangerously-in-love.mp3', 'assets/musica/water-tyle.mp3'];
     var listaRespostas1 = ['Conquista', 'ela dança eu danço', 'Rubi', 'Troca de calçada', 'mania', 'Da ponte pra cá', 'mainha', 'o amor vai vencer'];
     var listaRespostas2 = ['Nosso sonho', 'juntos pela eternidade', 'Não desliga o telefone', 'Estranho', 'linda de mais', 'Vida Loka II', 'viva a vida', 'juntos'];
     var listaRespostas3 = ['Quero te encontrar', 'mulher de lei', 'Oh meu amor', 'Ausência', 'sempre assim', 'A vida é desafio', 'sinta o amor', 'sei q me ama'];
     var listaRespostas4 = ['Chance', 'sintonia do amor', 'Me libera', 'Deprê', 'ainda te amo', 'Vida Loka', 'noitecer', 'ainda vou exisir'];
 
     var listaRespostasCerta = ['Nosso sonho', 'juntos pela eternidade', 'Não desliga o telefone', 'Ausência', 'ainda te amo', 'Da ponte pra cá', 'noitecer', 'sei q me ama'];
-    var listaRespostasCertaGenero = { 'pop': ['Nosso sonho'], 'mpb': ['juntos pela eternidade'], 'rock': ['Não desliga o telefone'], 'rap': ['Ausência'], 'funk': ['ainda te amo'], 'forro': ['Da ponte pra cá'], 'pagode': ['noitecer'], 'sertanejo': ['sei q me ama '] };
-
+    var listaRespostasCertaGenero = { 'pop': ['Nosso sonho'], 'reb': ['juntos pela eternidade', 'noitecer'], 'rock': ['Não desliga o telefone'], 'rap': ['Ausência'], 'kpop': ['ainda te amo'], 'hiphop': ['Da ponte pra cá','sei q me ama'] };
     var audio = document.getElementById("musica");
 
 
     function comecarJogo() {
         if (btnComecar == 1) {
-            gifComecar.innerHTML = '<source src="assets/comecar.mp4" type="video/mp4">'
+            gifComecar.innerHTML = '<source class="source-comecar" src="assets/comecar.mp4" type="video/mp4">'
             gifComecar.style.display = 'flex';
             gifComecar.play();
 
@@ -173,15 +176,13 @@
 
     function proximaPergunta() {
 
-
-
         respostaJogo = '';
         resposta1.style.color = 'white';
         resposta2.style.color = 'white';
         resposta3.style.color = 'white';
         resposta4.style.color = 'white';
 
-        if (perguntaAtual < 8) {
+        if (perguntaAtual < 7) {
             perguntaAtual += 1;
 
             audio.src = `${listaMusica[perguntaAtual]}`;
@@ -204,7 +205,6 @@
             audio.play();
             atualizarRelogio();
         } else {
-            console.log("sessionStorage.ID_USUARIO:", sessionStorage.ID_USUARIO);
             fetch("/usuarios/pontuacao", {
                 method: "POST",
                 headers: {
@@ -213,17 +213,18 @@
                 body: JSON.stringify({
                     // crie um atributo que recebe o valor recuperado aqui
                     // Agora vá para o arquivo routes/usuario.js
-                    mpbServer: mpb,
+                    mpbServer: 0,
                     rapServer: rap,
                     popServer: pop,
-                    funkServer: funk,
+                    funkServer: 0,
                     rockServer: rock,
-                    forroServer: forro,
-                    pagodeServer: pagode,
-                    sertanejoServer: sertanejo,
-                    rEbServer: forro,
-                    hiphopServer: pagode,
-                    kpopServer: sertanejo,
+                    forroServer: 0,
+                    pagodeServer: 0,
+                    sertanejoServer: 0,
+                    rEbServer: reb,
+                    hiphopServer: hiphop,
+                    kpopServer: kpop,
+                    pontuacaoTotalServer: pontuacaoTotal
                 }),
             })
                 .then(function (resposta) {
@@ -239,6 +240,24 @@
                     console.log("sessionStorage.ID_USUARIO (antes de /usuarios/partida):", sessionStorage.ID_USUARIO);
                     // Define sessionStorage.ID_PONTO
                     sessionStorage.ID_PONTO = json.idPonto;
+                    sessionStorage.PONTO_TOTAL = pontuacaoTotal;
+                    sessionStorage.PONTO_REB = reb;
+                    sessionStorage.PONTO_RAP = rap;
+                    sessionStorage.PONTO_POP = pop;
+                    sessionStorage.PONTO_KPOP = kpop;
+                    sessionStorage.PONTO_ROCK = rock;
+                    sessionStorage.PONTO_HIPHOP = hiphop;
+                    sessionStorage.PONTO_RESPOSTA_CERTA = respostaCerta;
+                    sessionStorage.PERGUNTAS_REB = listaRespostasCertaGenero['reb'].length;
+                    sessionStorage.PERGUNTAS_POP = listaRespostasCertaGenero['pop'].length 
+                    sessionStorage.PERGUNTAS_RAP = listaRespostasCertaGenero['rap'].length 
+                    sessionStorage.PERGUNTAS_KPOP = listaRespostasCertaGenero['kpop'].length 
+                    sessionStorage.PERGUNTAS_ROCK = listaRespostasCertaGenero['rock'].length 
+                    sessionStorage.PERGUNTAS_HIPHOP = listaRespostasCertaGenero['hiphop'].length  
+
+
+                    console.log("pontuaçao total:", sessionStorage.PONTO_TOTAL);
+
                     return fetch("/usuarios/partida", {
                         method: "POST",
                         headers: {
@@ -247,11 +266,12 @@
                         body: JSON.stringify({
                             // crie um atributo que recebe o valor recuperado aqui
                             // Agora vá para o arquivo routes/usuario.js
-                            temaPartidaServer: 'internacional',
+                            temaPartidaServer: 'nacional',
                             fkPontoServer: sessionStorage.ID_PONTO,
                             fkUsuarioServer: sessionStorage.ID_USUARIO
 
-                            
+
+
                         }),
                     });
                 })
@@ -259,8 +279,7 @@
                     console.log("resposta: ", resposta);
                     if (resposta.ok) {
 
-                        alert(
-                            "Pontuação realizado com sucesso! Redirecionando para tela de Login...");
+                        alert("Pontuação realizado com sucesso! Redirecionando para tela de Login...");
                         limparFormulario();
                     } else {
                         throw "Houve um erro ao tentar realizar o cadastro!";
@@ -271,7 +290,10 @@
 
                 });
 
-            return false;
+                setTimeout(() => {
+                window.location = "tela-ponto-Inter.html";
+            }, "1000");
+                return false;
         }
     }
 
@@ -317,7 +339,7 @@
                 resposta2.style.color = '#ffffff';
             }, 5000);
         } else if (listaRespostasCerta[perguntaAtual] == listaRespostas3[perguntaAtual]) {
-            resposta3.style.color = '#ffffff';
+            resposta3.style.color = '#ca156c';
             setTimeout(function () {
                 resposta3.style.color = '#ffffff';
             }, 5000);
@@ -331,51 +353,61 @@
 
 
     function somaPontos() {
-
         var pontos = 0;
-
-        for (var posicao = 0; posicao < listaRespostasCerta.length; posicao += 1) {
+        while (posicao < listaRespostasCerta.length) {
             if (respostaJogo == listaRespostasCerta[posicao]) {
+                respostaCerta +=1;
                 if (segundo <= 2) {
-                    pontuacaoPorGenero(pontos = 100);
-                    break;
+                    pontos = 100;
                 } else if (segundo <= 5) {
-                    pontuacaoPorGenero(pontos = 90);
-                    break;
+                    pontos = 90;
                 } else if (segundo <= 10) {
-                    pontuacaoPorGenero(pontos = 85);
-                    break;
+                    pontos = 85;
                 } else if (segundo <= 13) {
-                    pontuacaoPorGenero(pontos = 80);
-                    break;
+                    pontos = 80;
                 } else if (segundo <= 18) {
-                    pontuacaoPorGenero(pontos = 75);
-                    break;
+                    pontos = 75;
                 } else if (segundo <= 25) {
-                    pontuacaoPorGenero(pontos = 60);
-                    break;
+                    pontos = 60;
                 } else if (segundo <= 30) {
-                    pontuacaoPorGenero(pontos = 40);
-                    break;
+                    pontos = 40;
                 }
+
+                pontuacaoPorGenero(pontos);
+                console.log(pontos);
             } else {
                 respostaErrada();
-                break;
             }
+            posicao += 1
+            break;
         }
+
     }
 
     function pontuacaoPorGenero(pontos) {
 
-        for (var posicaoGenero = 0; posicaoGenero < listaRespostasCertaGenero['pop'].length; posicaoGenero += 1) {
-            if (listaRespostasCertaGenero['pop'][posicaoGenero]) {
-                pop += pontos;
-                resultado.innerHTML = `pontos: ${pop}`;
-                break;
-            } else if (listaRespostasCertaGenero['mpb'][posicaoGenero]) {
-                mpb += pontos;
-                resultado.innerHTML = `pontos: ${pop}`;
-                break;
+        for (var genero in listaRespostasCertaGenero) {
+            console.log(genero);
+            for (var posicaoGenero = 0; posicaoGenero < listaRespostasCertaGenero[genero].length; posicaoGenero += 1) {
+                console.log(posicaoGenero);
+                if (respostaJogo == listaRespostasCertaGenero[genero][posicaoGenero]) {
+                    if (genero == 'pop') {
+                        pop += pontos;
+                    } else if (genero == 'reb') {
+                        reb += pontos;
+                    } else if (genero == 'rap') {
+                        rap += pontos;
+                    } else if (genero == 'kpop') {
+                        kpop += pontos;
+                    } else if (genero == 'rock') {
+                        rock += pontos;
+                    } else if (genero == 'hiphop') {
+                        hiphop += pontos;
+                    } 
+
+                    pontuacaoTotal = reb + rap + pop + kpop + rock + hiphop;
+                    break;
+                }
             }
         }
     }
@@ -383,5 +415,4 @@
     function voltar() {
         window.location = "tela-tema.html";
     }
-
 </script>

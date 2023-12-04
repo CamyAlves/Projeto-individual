@@ -127,3 +127,11 @@ a{
     text-decoration: none;
     color: white;
 }
+
+#pontoTotalInter{
+    margin-top: 56px;
+}
+
+#box-pontuacaoInter{
+    margin-top: 20px;
+}
