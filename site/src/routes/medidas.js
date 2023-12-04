@@ -5,7 +5,7 @@ var interController = require("../controllers/medidaController");
 
 
 router.get("/ultimas/:idUsuario", function (req, res) {
-    usuarioController.analistInternacional(req, res);
+    interController.analistInternacional(req, res);
 });
 
 

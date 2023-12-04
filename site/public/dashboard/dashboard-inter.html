@@ -34,7 +34,7 @@
 </style>
 <!-- <body onload=" atualizarFeed()"> -->
 
-<body onload="obterDadosNacional(sessionStorage.ID_USUARIO)">
+<body onload="obterDadosInternacional(sessionStorage.ID_USUARIO)">
 
     <div class="header">
         <div class="nav-bar">
@@ -114,8 +114,8 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
 
-    function obterDadosNacional(idUsuario) {
-        fetch(`/usuarios/ultimas/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+    function obterDadosInternacional(idUsuario) {
+        fetch(`/medidas/ultimas/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 return response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
