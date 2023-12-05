@@ -28,6 +28,9 @@ router.get("/ultimas", function (req, res) {
     usuarioController.ranked(req, res);
 });
 
+router.get("/tempo-real/:idUsuario", function (req, res) {
+    interController.analistNacionalTempoReal(req, res);
+})
 
 
 

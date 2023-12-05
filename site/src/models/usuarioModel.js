@@ -55,7 +55,7 @@ function partida(temaPartida, fkPonto, fkUsuario) {
 function analistNacional(idUsuario){
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ",)
     var instrucao = `
-    select count(idPartida) as qntPartida, sum(pontuacaoTotal) as somaPonto, max(pontuacaoTotal) as melhorPonto from ponto join partida on idPonto = fkPonto join usuario on idUsuario = fkUsuario where temaPartida = 'nacional' and idUsuario = ${idUsuario};
+    select count(idPartida) as qntPartida, sum(pontuacaoTotal) as somaPonto, max(pontuacaoTotal) as melhorPonto, sum(mpb) as mpb, sum(rap) as rap, sum(pop) as pop, sum(funk) as funk, sum(rock) as rock, sum(forro) as forro, sum(pagode) as pagode, sum(sertanejo) as serta from ponto join partida on idPonto = fkPonto join usuario on idUsuario = fkUsuario where temaPartida = 'nacional' and idUsuario = ${idUsuario};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
