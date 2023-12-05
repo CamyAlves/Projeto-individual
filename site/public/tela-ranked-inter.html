@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>LifeMusic | Ranked</title>
+    <title>LifeMusic | Ranking Internacional</title>
 
     <script src="./js/sessao.js"></script>
 
@@ -20,63 +20,64 @@
 </head>
 
 <body onload="obterDadosRankedInter()">
-    <!--header inicio-->
-    <div class="header">
-        <div class="nav-bar">
-            <div class="container">
-                <img src="../assets/img/logo.png" alt="" class="logo">
-                <div class="nav">
-                   
-                </div>
+    <div class="titulo-rank">
+        <div class="title">
+            <h1>RANKING</h1>
+        </div>
+        <div class="span-title">
+            <span>Internacional</span>
+        </div>
+    </div>
+
+    <div class="tabelas">
+        <div class="borda-tabela">
+            <div class="tabela-titulo">
+                <span class="titulo">Maior pontuação acumulada</span>
+            </div>
+            <div class="tabela-select">
+                <table class="tabela-rakend">
+                    <thead>
+                        <tr>
+                            <th class="linha-table"></th>
+                            <th class="linha-table">Nome</th>
+                            <th class="linha-table">Tema</th>
+                            <th class="linha-table">pontuacao total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dadosRanked">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="borda-tabela">
+            <div class="tabela-titulo">
+                <span class="titulo">Melhor pontuação</span>
+            </div>
+            <div class="tabela-select">
+                <table class="tabela-rakend">
+                    <thead>
+                        <tr>
+                            <th class="linha-table"></th>
+                            <th class="linha-table">Nome</th>
+                            <th class="linha-table">Tema</th>
+                            <th class="linha-table">pontuacao total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dadosRankedMelhor">
+
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 
-    <div class="tabelas" style="display: flex; justify-content: space-evenly;">
-
-
-    <div class="borda-tabela" style="border: 1px solid #dd3a88; width: 40%; display: flex; flex-direction: column; border-radius: 20px;">
-        <div class="borda-tabela" style="width: 100%; display: flex; justify-content: center;"> 
-            <span class="titulo" style="font-size: 28px; color: #dd3a88; margin-top: 15px;">Maior pontuação acumulada</span>
-        </div>
-        <div class="borda-tabela" style="width: 100%; display: flex; justify-content: center; margin-top: 15px;"> 
-            <table class="tabela-rakend">
-                <thead>
-                    <tr>
-                        <th class="linha-table"></th>
-                        <th class="linha-table">Nome</th>
-                        <th class="linha-table">Tema</th>
-                        <th class="linha-table">pontuacao total</th>
-                    </tr>
-                </thead>
-                <tbody id="dadosRanked">
-    
-                </tbody>
-            </table>
-        </div>
+    <div class="btns">
+        <a href="dashboard/dashboard-inter.html"> <div class="btn">
+            Voltar
+        </div></a>
     </div>
-   
-    <div class="borda-tabela" style="border: 1px solid #dd3a88; width: 40%; display: flex; flex-direction: column; border-radius: 20px;">
-        <div class="borda-tabela" style="width: 100%; display: flex; justify-content: center;"> 
-            <span class="titulo" style="font-size: 28px; color: #dd3a88; margin-top: 15px;">Melhor pontuação</span>
-        </div>
-        <div class="borda-tabela" style="width: 100%; display: flex; justify-content: center; margin-top: 15px;"> 
-            <table class="tabela-rakend">
-                <thead>
-                    <tr>
-                        <th class="linha-table"></th>
-                        <th class="linha-table">Nome</th>
-                        <th class="linha-table">Tema</th>
-                        <th class="linha-table">pontuacao total</th>
-                    </tr>
-                </thead>
-                <tbody id="dadosRankedMelhor">
-    
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
 
 </body>
 

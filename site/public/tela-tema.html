@@ -17,7 +17,7 @@
             <div class="container">
                 <img src="../assets/img/logo.png" alt="" class="logo">
                 <div class="nav">
-                    <span>usuário</span>
+                    <span id="b_usuario" class="nickname">usuário</span>
                     <div class="foto-perfil"></div>
                 </div>
             </div>
@@ -101,3 +101,7 @@
 </body>
 
 </html>
+
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+</script>
