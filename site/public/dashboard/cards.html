@@ -104,9 +104,16 @@
                     </div>
                 </div>
             </div>
-            <div class="fundo">
-                <div class="graficoBarra">
-                    <div id="grafico"></div>
+            
+            <div class="container">
+                <div class="fundo-branco2">
+                    <div class="graficoBola">
+                        <div class="grafico_b"></div>
+                        <div class="grafico_b"></div>
+                    </div>
+                    <div class="graficoBarra">
+                        <div></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -117,29 +124,12 @@
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-    function abrirModalFotoPerfil() {
-        myModal.style.display = 'flex';
-    }
-
-    function fecharModal() {
-        myModal.style.display = 'none';
-    }
-
-    /*modal escolher a foto de perfil*/
-    function trocarFotoPerfil(cor, imagem) {
-        div_fotoPerfilUsuario.style.backgroundColor = cor;
-        div_fotoPerfilUsuario.innerHTML = `<img src="../assets/img/fotoPerfil-${imagem}" style="width:100px">`;
-    }
-
 
 
     function jogar() {
         window.location = "../tela-tema.html";
     }
 
-    if(sessionStorage.PONTO_RESPOSTA_CERTA_MPB != null){
-        grafico.innerHTML = `<div style=" display: flex; justify-content: center; color: #000; margin-top: 10px;">Ultima jogada</div><canvas id="myChart" style="position: relative; height: 13vh; width: 30vw;"></canvas>`;
-    }
 
     const ctx = document.getElementById('myChart');
 

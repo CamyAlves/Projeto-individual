@@ -68,7 +68,7 @@ body, html{
     font-size: 17px;
 }
 
-.fundo-cinza .fundo-cinza-elementos .span_rosa{
+.span_rosa{
     color: #DD3A88;
 }
 
@@ -143,6 +143,64 @@ body, html{
     font-size: 14px;
     cursor: pointer;
 }
+
+
+
+
+
+
+.box-ponto-rankbox-ponto-rank{
+    display: flex; 
+    flex-direction: column;
+}
+
+.fundo-ponto .fundo-cinza-elementos{
+    width: 90%; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.texto_jogar_ponto{
+    margin-top: 30px;
+}
+
+.texto_jogar_ponto .span_ponto{
+    font-size: 43px; 
+    font-weight: bold; 
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    color: #DD3A88;
+    margin-left: 20px;
+}
+
+.rakend{
+    display: flex; 
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+.div-rank{
+    display: flex;
+    justify-content: center;
+}
+
+.span-rank{
+    font-size: 26px;
+}
+
+.div-img-rank{
+    display: flex;
+    justify-content: center;
+}
+
+.img-rank{
+    width: 50px; 
+    height: auto; 
+    cursor: pointer;
+}
+
 
 /*Graficos*/
 
