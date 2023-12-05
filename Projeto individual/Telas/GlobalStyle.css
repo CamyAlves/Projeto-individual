@@ -51,10 +51,10 @@ body{
     color: white;
 }
 
-.header .nav .nickname{
+.nickname{
     color: white;
-    font-size: 14px;
-    margin-right: 17px;
+    font-size: 30px;
+    margin-right: 20px;
 }
 
 .header .nav .foto-perfil{

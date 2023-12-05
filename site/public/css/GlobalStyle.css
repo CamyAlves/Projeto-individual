@@ -62,8 +62,8 @@ body {
 
 .header .nav .nickname {
     color: white;
-    font-size: 16px;
-
+    font-size: 20px;
+    margin-right: 16px;
 }
 
 .header .nav .foto-perfil {
@@ -71,6 +71,7 @@ body {
     height: 40px;
     border-radius: 50px;
     background-color: #DD3A88;
+    margin-right: 30px;
 }
 
 .header .container button {

@@ -13,5 +13,8 @@ router.get("/ultimas", function (req, res) {
     interController.rankedInter(req, res);
 });
 
+router.get("/tempo-real/:idUsuario", function (req, res) {
+    interController.analistInternacionalTempoReal(req, res);
+})
 
 module.exports = router;
