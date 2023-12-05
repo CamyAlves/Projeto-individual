@@ -105,15 +105,9 @@
                 </div>
             </div>
             
-            <div class="container">
-                <div class="fundo-branco2">
-                    <div class="graficoBola">
-                        <div class="grafico_b"></div>
-                        <div class="grafico_b"></div>
-                    </div>
-                    <div class="graficoBarra">
-                        <div></div>
-                    </div>
+            <div class="fundo">
+                <div class="graficoBarra">
+                    <div id="grafico"> <div style=" display: flex; justify-content: center; color: #000; margin-top: 10px;">Ultima jogada</div><canvas id="myChart" style="position: relative; height: 11vh; width: 30vw;"></canvas></div>
                 </div>
             </div>
         </div>
@@ -123,7 +117,6 @@
 
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
 
 
     function jogar() {
