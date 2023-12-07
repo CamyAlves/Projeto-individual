@@ -251,7 +251,8 @@ body{
     display: flex; 
     justify-content: center; 
     width: 100%; 
-    background-image: url(); margin-top: 50px;
+    background-image: url(); 
+    margin-top: 50px;
 }
 
 .sobre-mim-img{

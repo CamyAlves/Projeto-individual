@@ -40,11 +40,18 @@ create table partida(
 insert into usuario(nome, email, senha) values
 	('Valeria', 'valeria@gmail.com', 'Valeria123.'),
     ('Paula', 'paula@gmail.com', 'Paula123.'),
-    ('Maria', 'maria@gmail.com', 'Maria123.');
+    ('Maria', 'maria@gmail.com', 'Maria123.'),
+	('Jacson', 'jacson@gmail.com', 'Jacson123.'),
+	('Kaike', 'kaike@gmail.com', 'Kaike123.'),
+	('Tata', 'tabata@gmail.com', 'Tabata123.'),
+	('Carlos', 'carlos@gmail.com', 'carlos123.'),
+	('Juh', 'juliana@gmail.com', 'Juliana123.'),
+	('Jão', 'joão@gmail.com', 'João123.'),
+	('Davi', 'davi@gmail.com', 'Davi123.');
     
     
 insert into ponto (mpb, rap, pop, funk, rock, forro, pagode, sertanejo, pontuacaoTotal) values
-	(200, 1000, 2000, 400, 900, 290, 5000, 200, 70208),
+	(200, 100, 45, 80, 70, 25, 65, 100, ),
     (200, 1000, 2000, 400, 900, 290, 5000, 200, 300);
     
 insert into partida (fkPonto, fkUsuario, temaPartida) values
